@@ -136,19 +136,15 @@ Notice how the data can be sent to a table just like if the original `timechart`
 
 ![Splunk Cloud search results shown with search of index=summary version=100 | table * highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/2_6.png?raw=true)
 
-6. If you're interested in determining how less space the summarized events take up, compare the results from these two searches which calculate the number of characters in the raw events and the summarized events.  Notice how the summarized events have fewer characters and therefore these events take up less storage.
+6. If you're interested in determining how much less space the summarized events take up, run the search below:
 
 ```
-index=purchases sourcetype=web_purchases action=purchase
-| eval rawSize=len(_raw)
-| stats sum(rawSize) as raw_event_size
+(index=purchases sourcetype=web_purchases action=purchase) OR (index=summary version=100) 
+| eval eventSize=len(_raw)
+| stats sum(eventSize) as total_event_size by index
 ```
 
-```
-index=summary version=100
-| eval rawSize=len(_raw)
-| stats sum(rawSize) as summarized_event_size
-```
+Notice how the event sizes per index are significantly different, with the summarized data in the `summary` index is smaller than the raw events in the `purchases` index take up more space.
 
 ## Task 3: Metricize Events
 
