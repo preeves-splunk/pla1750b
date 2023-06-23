@@ -10,6 +10,7 @@ A few notes on how this lab is formatted:
 - All of our screenshots throughout the lab are taken in the "Light" theme so it's easier to read, but your environment may use a "Dark" theme as that is the new system default.
 - The red boxed sections in the screenshots indicate where you need to interact with the browser window or terminal session by clicking or typing something.
 - The green boxed sections in the screenshots indicate something you should read, view, or note.
+- Both the Splunk Cloud and Splunk Enterprise hosts are configured to use the light theme so that what you see in the screenshots matches what you see on your screen.  However if you'd like to switch your interface to use the dark theme you're welcome to do so.
 
 ## Task 1: Explore Splunk Cloud Environment
 
