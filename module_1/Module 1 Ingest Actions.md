@@ -54,7 +54,7 @@ Also, notice how additional information around how much data was reduced is prov
 
 ![Splunk Cloud ingest actions interface with applied via regex with dropped events and percentage chagned highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_1/1_8.png?raw=true)
 
-8. View the settings that will be applied to the `props.conf` and `transforms.conf` files by clicking the **Preview Config** button.  This is a good way to check to see how Splunk is going to apply this rule set.  No action is needed here, this step was just to show you how can you preview the configurations before they get deployed.  
+8. View the settings that will be applied to the `props.conf` and `transforms.conf` files by clicking the **Preview Config** button.  This is a good way to check to see how Splunk is going to apply this rule set.  No action is needed here, this step was just to show you how you can preview the configurations before they get deployed.  
 9. Click the **Close** button.
 
 ![Splunk Cloud ingest actions interface showing preview of props.conf and transforms.conf with Preview Config, Save, and Close buttons highlighted in red and the props.conf and transforms.conf settings highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_1/1_9.png?raw=true)
@@ -88,7 +88,7 @@ Notice how many of the values in the events consist of non-valuable data such as
 ![Splunk Cloud ingest actions ruleset with cisco:asa sourcetype being selected with the ruleset name, sourcetype selection, and use cisco:estreamer:data text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_1/2_4.png?raw=true) 
 
 6. Add a new rule by clicking the **+ Add Rule**, and selecting the **Mask with Regular Expression** option.
-7. Configure ingest actions to remove some of the non-valuable fields by settingthe following fields in the rule:
+7. Configure ingest actions to remove some of the non-valuable fields by setting the following fields in the rule:
 	- **Match Regular Expression:** `([a-z\_]+=(""\s))`
 	- **Replace Expression:** Don't put anything here, just select the field and tap your space bar to enter a space character.
 8. Click the **Apply** button.
@@ -103,14 +103,14 @@ Notice how much more of the data is now being removed, with 64% of the data bein
 
 ![Splunk Cloud ingest actions ruleset with regex mask applied with the regular expression and Apply button highlighted in red, and Data Preview pane highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_1/2_6.png?raw=true) 
 
-10. View the detailed statistics about data reducton by clicking the **Ruler** button on the upper-right side of the `Data Preview` pane.
+10. View the detailed statistics about data reduction by clicking the **Ruler** button on the upper-right side of the `Data Preview` pane.
 11. Click the **Save** button to save & deploy the new ruleset.
 
 ![Splunk Cloud ingest actions ruleset page with statistics shown with the ruler icon and Save button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_1/2_7.png?raw=true) 
 
 ## Task 3: Mask Sensitive Data in Events
 
-The compliance team has requested that any sensitive data be removed from events before the events are ingested in Splunk Cloud.  Specifically, they have found that credit card numbers that are being ingested in the purchase records and need those removed.
+The compliance team has requested that any sensitive data be removed from events before the events are ingested in Splunk Cloud.  Specifically, they have found that credit card numbers that are being ingested in the purchase records and need those credit card numbers need to be removed.
 
 1. Run the search below to view the purchase records:
 
@@ -167,7 +167,7 @@ Notice how this search is only looking for OneDrive events.
 
 ![Splunk Cloud ingest actions with the + Add Rule button and Set Index rule highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_1/4_3.png?raw=true)
 
-7. Configure the rule to re-route the OneDrive data to the `storage_services` index by setting hte following fields:
+7. Configure the rule to re-route the OneDrive data to the `storage_services` index by setting the following fields:
 	- **Condition:** `Regex`
 	- **Regular Expression:** `("Workload": "OneDrive")}$`
 	- **Set index as:** `storage_services`
@@ -194,7 +194,7 @@ index=firewall sourcetype=cisco:asa 106023 OR 302020 OR 302021 OR 313005 OR 1060
 OR 302023 OR 302024 OR 302025 OR 302026 OR 302027 OR 4001*
 ```
 
-Notice that recent events exist for the first search, but not the second.  This indicates that ingest actions is correctly filtering out ICMP-related messages.
+Notice that recent events exist for the first search, but not the second.  This indicates that ingest actions ruleset is correctly filtering out ICMP-related messages.
 
 ![Splunk Cloud search results of index=firewall sourcetype=cisco:asa with the search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_1/5_1.png?raw=true)
 

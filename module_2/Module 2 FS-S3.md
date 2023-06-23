@@ -23,7 +23,7 @@ More documentation will be available when Federated Search for Amazon S3 officia
 
 ## Task 1: Configure the Amazon S3 Federated Search Provider and Federated Index in Splunk Cloud
 
-In this task you'll be configuring Splunk Cloud to search VPC Flow Log data residing in an Amazon S3 bucket.  Normally this requires coordination between the AWS Admin and Splunk Admin, but everything AWS-side (including the Glue catalog, Glue Crawler, Glue resoruce policy and S3 bucket policies) are already created and configured for you.
+In this task you'll be configuring Splunk Cloud to search VPC Flow Log data residing in an Amazon S3 bucket.  Normally this requires coordination between the AWS Admin and Splunk Admin, but everything AWS-side (including the Glue catalog, Glue Crawler, Glue resource policy and S3 bucket policies) are already created and configured for you.
 
 1. In the Splunk Cloud environment, navigate to **Settings** > **Federated Search**.
 
@@ -48,9 +48,9 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 
 5. Now that the Federated Search has been created, you need to create a Federated Index.  To start that, click the **Create Federated Index** button.
 
-![Splunk Cloud with settings display shown with Craete federated index button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_2/1_5.png?raw=true)
+![Splunk Cloud with settings display shown with Create federated index button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_2/1_5.png?raw=true)
 
-6. On the `Create a Fedearted Index` pane, fill out the following fields:
+6. On the `Create a Federated Index` pane, fill out the following fields:
 	- **Federated Index Name**: `vpcFlowLogs`
 	- **Dataset Name**: `pla1750b_public_fs_s3_bucket`
 	- **Time Field**: `time`
