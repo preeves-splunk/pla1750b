@@ -44,10 +44,9 @@ This search can be saved and configured to run as a saved search once-a-day so t
 | inputlookup onedrive-activity.csv
 ```
 
-Now that the lookup table has been created, a saved search can be used to automatically update the lookup table by using the `outputlookup` command.
-
 ![Splunk Cloud search results for | inputlookup onedrive-activity.csv shown with search highlighted in red, and results table highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_7.png?raw=true)
 
+Now that the lookup table has been created, the search that created the lookup table can be saved and configured to run automatically to update the lookup table using the `outputlookup` command.
 
 5. The data from the lookup table can be appended to a search using the `append` and `inputlookup` commands.  Set the time range picker to **1 minute** and run the search below to see this in action:
 
