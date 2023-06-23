@@ -25,34 +25,8 @@ index=storage_services OR index=main sourcetype=o365:management:activity Workloa
 
 ![Splunk Cloud search results of index=storage_services OR index=main sourcetype=o365:management:activity Workload=OneDrive | timechart span=1m count by Operation with search highlighted in red and tabled results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_2.png?raw=true)
 
-3. Save the results from this search as `onedrive-activity` (the .csv extension will automatically added).  You can save search results buy clicking the **down arrow** icon below the search bar, naming the file and clicking **Export**.
 
-![Splunk Cloud export results pane with download button, File Name, and Export button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_3.png?raw=true)
-
-4. Next, you'll need to create a lookup table.  Do this by navigating to **Settings** > **Lookups**.
-
-![Splunk Cloud settings pane with Settings and Lookup text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_4.png?raw=true)
-
-5. To the right of `Lookup table files`, click  **+ Add new**:
-
-![Splunk Cloud lookups page with + Add new text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_5.png?raw=true)
-
-6. Set the following fields
-	- **Upload a lookup file**: Click **Choose File**, then select the file downloaded from step 3.
-	- **Destination filename**: `onedrive-activity.csv`
-7. Click **Save**
-
-![Splunk Cloud Add new lookup page with Choose file, filename, and Save button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_6.png?raw=true)
-
-8. Make sure the lookup table was created correctly by verifying this search below, which dumps the contents of the lookup table:
-
-```
-| inputlookup onedrive-activity.csv
-```
-
-![Splunk Cloud search results for | inputlookup onedrive-activity.csv shown with search highlighted in red, and results table highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_7.png?raw=true)
-
-9. Now that the lookup table has been created, a saved search can be used to automatically update the lookup table by using the `outputlookup` command:
+3. Create a new lookup named `onedrive-activity.csv` by adding the `outputlookup` command to the saerch:
 
 ```
 index=storage_services OR index=main sourcetype=o365:management:activity Workload=OneDrive
@@ -64,7 +38,18 @@ This search can be saved and configured to run as a saved search once-a-day so t
 
 ![Splunk Cloud search results shown with search index=storage_services OR index=main sourcetype=o365:management:activity Workload=OneDrive | timechart span=1m count by Operation | outputlookup onedrive-activity.csv highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_8.png?raw=true)
 
-10. The data from the lookup table can be appended to a search using the `append` and `inputlookup` commands.  Set the time range picker to **1 minute** and run the search below to see this in action:
+4. Make sure the lookup table was created correctly by verifying this search below, which dumps the contents of the lookup table:
+
+```
+| inputlookup onedrive-activity.csv
+```
+
+Now that the lookup table has been created, a saved search can be used to automatically update the lookup table by using the `outputlookup` command.
+
+![Splunk Cloud search results for | inputlookup onedrive-activity.csv shown with search highlighted in red, and results table highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_7.png?raw=true)
+
+
+5. The data from the lookup table can be appended to a search using the `append` and `inputlookup` commands.  Set the time range picker to **1 minute** and run the search below to see this in action:
 
 ```
 index=storage_services OR index=main sourcetype=o365:management:activity Workload=OneDrive 
