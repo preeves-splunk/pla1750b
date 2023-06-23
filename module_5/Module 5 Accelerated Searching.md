@@ -103,7 +103,7 @@ index=purchases sourcetype=web_purchases action=purchase
 
 ![Splunk Cloud search results shown with search of index=purchases sourcetype=web_purchases action=purchase | timechart span=1m sum(cost) as revenue by product highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/2_3.png?raw=true)
 
-4. Add the `collect` command next.  The search below will take the results from the `timechart` command, send the data to the `summary` index, with a markers of `verison=100`, & `search_name=summarize_purchases`.  Set `testmode` on this search to view the results without sending any data to the summary index.
+4. Add the `collect` command next.  The search below will take the results from the `timechart` command, send the data to the `summary` index, with a markers of `version=100`, & `search_name=summarize_purchases`.  Set `testmode` on this search to view the results without sending any data to the summary index.
 
 ```
 index=purchases sourcetype=web_purchases action=purchase
@@ -182,7 +182,7 @@ index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 
 ![Splunk Cloud search results shown with search of index=aws sourcetype=aws:cloudwatchlogs:vpcflow | bin span=1m _time | stats sum(bytes) as sum_bytes by interface_id, account_id, _time  | rename sum_bytes as metric_name:sum_bytes highlighted  in red, and results in table form highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/3_3.png?raw=true)
 
-4. Now, use the `mcollect` command to send the metrcized events to the `summary_metrics` index, specifying `account_id` and `interface_id` as metric dimensions, with a version of `100` using a marker & `search_name` of `summarize_vpcflow` using markers:
+4. Now, use the `mcollect` command to send the metricized events to the `summary_metrics` index, specifying `account_id` and `interface_id` as metric dimensions, with a version of `100` using a marker & `search_name` of `summarize_vpcflow` using markers:
 
 ```
 index=aws sourcetype=aws:cloudwatchlogs:vpcflow
@@ -203,4 +203,4 @@ index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 
 ![Splunk Cloud search results shown with search of | mpreview index=summary_metrics filter=version=100 highlighted  in red, and results in table form highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/3_5.png?raw=true)
 
-From here, a saved search can be created to regularly (on a cadence) metricize the events and send them to the `summary_metrics` index.  The networking team can then search the metrcized events using the `mstats` command.
+From here, a saved search can be created to regularly (on a cadence) metricize the events and send them to the `summary_metrics` index.  The networking team can then search the metricized events using the `mstats` command.
