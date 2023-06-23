@@ -27,11 +27,11 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 
 1. In the Splunk Cloud environment, navigate to **Settings** > **Federated Search**.
 
-![Splunk Cloud with settings display shown with Settings and Federated Search highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/1_1.png?raw=true)
+![Splunk Cloud with settings display shown with Settings and Federated Search highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/1_1.png?raw=true)
 
 2. Start the process of adding a new federated search provide by clicking the **Add federated provider** button, selecting **Amazon S3** and clicking **Next**.
 
-![Splunk Cloud add federated provider pane shown with Add Federated Search Provider, the Amazon S3 option, and Next button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/1_2.png?raw=true)
+![Splunk Cloud add federated provider pane shown with Add Federated Search Provider, the Amazon S3 option, and Next button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/1_2.png?raw=true)
 
 3. On the `Add Amazon S3 Provider` pane, fill out the following fields:
 	- **Federated provider name:** `pla1750b_workshop`
@@ -40,15 +40,15 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 	- **Glue Data Catalog tables**: `pla1750b_public_fs_s3_bucket`
 	- **Amazon S3 locations**: `s3://pla1750b-public-fs-s3-bucket/`
 
-![Splunk Cloud Add Amazon S3 Provider pane shown with required input fields highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/1_3.png?raw=true)
+![Splunk Cloud Add Amazon S3 Provider pane shown with required input fields highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/1_3.png?raw=true)
 
 4. Finish creating the Amazon S3 Federated Search Provider by clicking **Generate Policy**, then clicking both check mark boxes next to **Warning and consent** and **Confirmation that Requestor Pay is turned off**, then clicking **Create provider**.
 
-![Splunk Cloud with Add Amazon S3 Provider pane shown with checkmark boxes and Create provider button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/1_4.png?raw=true)
+![Splunk Cloud with Add Amazon S3 Provider pane shown with checkmark boxes and Create provider button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/1_4.png?raw=true)
 
 5. Now that the Federated Search has been created, you need to create a Federated Index.  To start that, click the **Create Federated Index** button.
 
-![Splunk Cloud with settings display shown with Craete federated index button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/1_5.png?raw=true)
+![Splunk Cloud with settings display shown with Craete federated index button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/1_5.png?raw=true)
 
 6. On the `Create a Fedearted Index` pane, fill out the following fields:
 	- **Federated Index Name**: `vpcFlowLogs`
@@ -57,7 +57,7 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 	- **Time Format**: `%UT`
 	- **Unix time field**: `_time`
 
-![Splunk Cloud with Create a Federated Index pane shown with required fields highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/1_6.png?raw=true)
+![Splunk Cloud with Create a Federated Index pane shown with required fields highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/1_6.png?raw=true)
 
 7. You'll need to add 3 partition time settings.  You can set those by clicking the **Add new field** button three times, then setting the following fields:
 	- **Level 1**:
@@ -74,7 +74,7 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 		- **Type**: `string`
 8. Click **Save**
 
-![Splunk Cloud create a Federated Index pane shown with the partition time settings, Add new field button, and Save button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/1_7.png?raw=true)
+![Splunk Cloud create a Federated Index pane shown with the partition time settings, Add new field button, and Save button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/1_7.png?raw=true)
 
 9. To test this configuration, run the search below for **all time** and make sure results are returned with no errors:
 
@@ -84,7 +84,7 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 
 Please note that it may take several minutes for the proper AWS-based permissions to be deployed to Splunk so that it can search the data without error.
 
-![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/1_8.png?raw=true)
+![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/1_8.png?raw=true)
 
 ## Task 2: Search Data Using FS-S3 to Show Long-Term Retention
 
@@ -98,11 +98,11 @@ The new `sdselect` command is used to query data stored in Amazon S3 made search
 | sdselect * from federated:vpcflowlogs
 ```
 
-![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/2_1.png?raw=true)
+![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/2_1.png?raw=true)
 
 2. Modify the time range picker to be June 13th 2023 by clicking **All time**, then setting the **Date Range** to be between **6/13/2023 00:00:00** and **6/13/2023 24:00:00**, then re-run the query.  
 
-![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs shown and time range picker being changed with search and time range highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/2_2.png?raw=true)
+![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs shown and time range picker being changed with search and time range highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/2_2.png?raw=true)
 
 In the real world, you would export these results and send them to the compliance team.
 
@@ -112,7 +112,7 @@ In the real world, you would export these results and send them to the complianc
 | sdselect count from federated:vpcflowlogs groupby source
 ```
 
-![Splunk Cloud with results from search| sdselect count from federated:vpcflowlogs groupby source shown with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/2_3.png?raw=true)
+![Splunk Cloud with results from search| sdselect count from federated:vpcflowlogs groupby source shown with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/2_3.png?raw=true)
 
 
 ## Task 3: Search Amazon S3 for Security Investigation
@@ -127,7 +127,7 @@ Just like the previous task, for each one of these steps read the description fo
 | sdselect * from federated:vpcflowlogs
 ```
 
-![Splunk Cloud with results from search| sdselect * from federated:vpcflowlogs groupby source shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/3_1.png?raw=true)
+![Splunk Cloud with results from search| sdselect * from federated:vpcflowlogs groupby source shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/3_1.png?raw=true)
 
 2. Query for only the time and event fields:
 
@@ -137,7 +137,7 @@ Just like the previous task, for each one of these steps read the description fo
 
 Notice how only the selected `time` and `event` fields are being returned.
 
-![Splunk Cloud with results from search | sdselect time, event from federated:vpcflowlogs groupby source shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/3_2.png?raw=true)
+![Splunk Cloud with results from search | sdselect time, event from federated:vpcflowlogs groupby source shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/3_2.png?raw=true)
 
 3. Query for just events in the AWS Account ID `958172947816`:
 
@@ -147,7 +147,7 @@ Notice how only the selected `time` and `event` fields are being returned.
 
 Notice how only events involving the AWS account number `958172947816` are shown.
 
-![Splunk Cloud with results from search | sdselect time, event from federated:vpcflowlogs where source=958172947816 shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/3_3.png?raw=true)
+![Splunk Cloud with results from search | sdselect time, event from federated:vpcflowlogs where source=958172947816 shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/3_3.png?raw=true)
 
 4. Add a filter to just look for events from `eni-0212b9abe7101dbcb`:
 
@@ -157,7 +157,7 @@ Notice how only events involving the AWS account number `958172947816` are shown
 
 Notice how only events with the string `eni-0212b9abe7101dbcb` are returned. 
 
-![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" shown over June 17th through June 23rd timeframe ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/3_4.png?raw=true)
+![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" shown over June 17th through June 23rd timeframe ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/3_4.png?raw=true)
 
 5. Increase the `LIMIT` to make sure all of the events are being retrieved from the Amazon S3 bucket
 
@@ -167,7 +167,7 @@ Notice how only events with the string `eni-0212b9abe7101dbcb` are returned.
 
 Notice how there are more than the default 100,000 events being returned.
 
-![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" LIMIT 100000000 over June 17th through June 23rd timeframe ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/3_5.png?raw=true)
+![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" LIMIT 100000000 over June 17th through June 23rd timeframe ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/3_5.png?raw=true)
 
 6. Data retrieved via the `sdselect` command doesn't know about sourcetypes or search-time field extractions, other SPL commands like `rex` need to be used in order to extract fields at search time.  Use the query below to extract the relevant CIM fields for VPC Flow Logs  (the regular expression was taken from the Splunk Add-on for Amazon Web Services):
 
@@ -178,7 +178,7 @@ Notice how there are more than the default 100,000 events being returned.
 
 Notice how CIM field extractions like `dest_port`, and `src_ip` are now in the event table.
 
-![Splunk Cloud with results from search shown ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/3_6.png?raw=true)
+![Splunk Cloud with results from search shown ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/3_6.png?raw=true)
 
 7. Add a `stats` command to calculate the total number of bytes transmitted between the suspect ENI, each source IP it held, and each destination IP it talked to:
 
@@ -189,6 +189,6 @@ Notice how CIM field extractions like `dest_port`, and `src_ip` are now in the e
 | sort - total_bytes
 ```
 
-![Splunk Cloud with results from search shown](https://github.com/preeves-splunk/pla1750b-internal/blob/main/modules/module_2/3_7.png?raw=true)
+![Splunk Cloud with results from search shown](https://github.com/preeves-splunk/pla1750b-internal/blob/main/module_2/3_7.png?raw=true)
 
 Again, in the real world, you would export these results and send them to the SOC for further investigation.

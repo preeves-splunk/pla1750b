@@ -15,19 +15,19 @@ A few notes on how this lab is formatted:
 
 1. Open a browser tab and navigate to the Splunk Cloud URL provided by Splukn Show.  Log in as the `sc_admin` user and provided password provided by Splunk Show.  If prompted, click the **I accept these terms** checkmark box, then the Ok button.
 
-![Splunk Cloud login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_1.png?raw=true)
+![Splunk Cloud login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_1.png?raw=true)
 
-![Splunk Cloud Terms of Service screen with I accept these terms and Ok button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_2.png?raw=true)
+![Splunk Cloud Terms of Service screen with I accept these terms and Ok button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_2.png?raw=true)
 
 2. To discover what data sourcetypes and indexes are available in the Splunk Cloud instance, navigate to the **Search & Reporting app** under the **Apps** menu in the upper left hand corner of your browser.  Utilize the following search by copying and pasting it into the Search field and clicking the magnifying glass to the right to execute the search.
 
-![Splunk Cloud main screen with Search & Reporting app link highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_3.png?raw=true)
+![Splunk Cloud main screen with Search & Reporting app link highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_3.png?raw=true)
 
 ```
 | tstats count where index=* by index, sourcetype
 ```
 
-![Search results for | tstats count where index=* by index, sourcetype with search and search button highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_4.png?raw=true)
+![Search results for | tstats count where index=* by index, sourcetype with search and search button highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_4.png?raw=true)
 
 If there is data available, search through each of the following indexes in turn to look at the available data.  Note that each of the searches should return results from the past 10 minutes, but leave the time range picker set to **Last 30 Minutes**.
 
@@ -37,7 +37,7 @@ If there is data available, search through each of the following indexes in turn
 index=main
 ```
 
-![Splunk Cloud search results for index=main with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_5.png?raw=true)
+![Splunk Cloud search results for index=main with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_5.png?raw=true)
 
 4. Search the AWS VPC Flow Logs:
 
@@ -45,7 +45,7 @@ index=main
 index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 ```
 
-![Splunk Cloud search results for index=aws \sourcetype=aws:cloudwatchlogs:vpcflow with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_6.png?raw=true)
+![Splunk Cloud search results for index=aws \sourcetype=aws:cloudwatchlogs:vpcflow with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_6.png?raw=true)
 
 5. Search the firewall events:
 
@@ -53,7 +53,7 @@ index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 index=firewall
 ```
 
-![Splunk Cloud search results for index=firewall with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_7.png?raw=true)
+![Splunk Cloud search results for index=firewall with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_7.png?raw=true)
 
 6. Search the purchase records:
 
@@ -61,7 +61,7 @@ index=firewall
 index=purchases
 ```
 
-![Splunk Cloud search results for index=purchases with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_8.png?raw=true)
+![Splunk Cloud search results for index=purchases with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_8.png?raw=true)
 
 ## Task 2: Explore Splunk Enterprise Environment
 
@@ -73,8 +73,8 @@ index=purchases
 index=_internal
 ```
 
-![Splunk Enterprise search results for index=_internal with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_9.png?raw=true)
+![Splunk Enterprise search results for index=_internal with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_9.png?raw=true)
 
 3. In a terminal window, or your preferred SSH client, open an SSH session to the *Splunk Enterprise* host using the provided IP address.  Utilize the SSH username and password provided by Splunk Show.  Once you have logged in, validate that you are able to run commands utilizing `sudo` by executing `sudo whoami`.  The expected command response is `root`.
 
-![Graphic showing terminal windo after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/modules/module_0/0_10.png?raw=true)
+![Graphic showing terminal windo after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v1/module_0/0_10.png?raw=true)
