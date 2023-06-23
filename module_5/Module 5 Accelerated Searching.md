@@ -6,7 +6,7 @@ Accelerated searching is a great way to reduce search runtime by pre-computing (
 
 The SOC is interested in using machine learning to help detect when an anomalous amount of data is being downloaded or uploaded to OneDrive.  They’d like to use outlier detection to accomplish this, but in order to do this they want to search off of the past 90 days of OneDrive data every hour to figure out a baseline for what is a normal amount of data transfer.  Searching over the past 90 days of OneDrive data every hour to detect anomalies will put an unnecessary amount of search load on Splunk and there’s a better way: summary indexing!
 
-In this task you'll configure a search to gather metrics related to OneDrive usage, and save those results to a lookup table.  This lookup table can then be used to establish a baseline for what "normal" OneDrive usage looks like, and used in an alert instead of searching over the raw 90 days of data every time the search powering the alert alert needs to run.
+In this task you'll configure a search to gather metrics related to OneDrive usage, and save those results to a lookup table.  This lookup table can then be used to establish a baseline for what "normal" OneDrive usage looks like, and used in an alert instead of searching over the raw 90 days of data every time the search powering the alert needs to run.
 
 1. In module 1, you redirected the OneDrive-related events to go to the `storage_services` index, however for this task we'll want to reference as much data as possible, so you'll be searching against OneDrive data in both the `main` and `storage_services` index.  Run the search below to make sure data is getting pulled back for the whole 30 minutes:
 
@@ -38,7 +38,7 @@ index=storage_services OR index=main sourcetype=o365:management:activity Workloa
 ![Splunk Cloud lookups page with + Add new text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v1/module_5/1_5.png?raw=true)
 
 6. Set the following fields
-	- **Upload a lookup file**: Click **Choose File**, thens elect the file downloaded from step 3.
+	- **Upload a lookup file**: Click **Choose File**, then select the file downloaded from step 3.
 	- **Destination filename**: `onedrive-activity.csv`
 7. Click **Save**
 
