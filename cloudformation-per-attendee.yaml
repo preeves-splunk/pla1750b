@@ -1,0 +1,245 @@
+---
+
+AWSTemplateFormatVersion: "2010-09-09"
+Description: CloudFormation template to spin up per-attendee AWS-based workshop resources for .conf23 PLA1750B.
+
+Parameters:
+
+  stackName:
+    Description: SCP stack name
+    AllowedPattern: ^[a-z0-9_-]*$
+    Type: String
+
+  scpDestinationPrefix:
+    Description: Unique prefix for IA dest buckets that comes after the stack name
+    Type: String
+
+  scpStackPrincipal:
+    Description: AWS Principal for stack to access bucket
+    Type: String
+
+  fsS3Bucket:
+    Description: S3 bucket name that holds data for FS-S3 module
+    Type: String
+
+  stackNameCleaned:
+    Description: SCP stack name with underscores instead of dashes to work with AWS Glue naming restrictions
+    AllowedPattern: ^[a-z0-9_]*$
+    Type: String
+
+  contact:
+    Description: Contact info for the stack
+    Type: String
+
+Resources:
+
+# Ingest Actions Module
+  iaDestBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 
+          Fn::Sub: "${scpDestinationPrefix}ia-dest"
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      LifecycleConfiguration:
+        Rules:
+            - Id: 
+                Fn::Sub: "${scpDestinationPrefix}ia-dest-cleanupPolicy"
+              AbortIncompleteMultipartUpload:
+                DaysAfterInitiation: 1
+              Status: Enabled
+            - Id: 
+                Fn::Sub: "${scpDestinationPrefix}ia-dest-intelligentTieringPolicy"
+              Status: Enabled
+              Transition:
+                TransitionInDays: '1'
+                StorageClass: INTELLIGENT_TIERING
+      Tags:
+      - Key: "Name"
+        Value: 
+            Fn::Sub: "${scpDestinationPrefix}ia-dest"
+      - Key: "Contact"
+        Value:
+            Ref: contact
+
+  iaDestBucketBucketPolicy:
+    DependsOn: iaDestBucket
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: 
+        Fn::Sub: "${scpDestinationPrefix}ia-dest"
+      PolicyDocument:
+        Statement:
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+            - s3:ListBucket
+          Principal: 
+            AWS: 
+              Ref: scpStackPrincipal
+          Resource:
+            - Fn::Sub: "arn:aws:s3:::${scpDestinationPrefix}ia-dest"
+            - Fn::Sub: "arn:aws:s3:::${scpDestinationPrefix}ia-dest/*"
+
+# DDSS Restore Module
+  ddssDestBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: 
+          Fn::Sub: "${scpDestinationPrefix}ddss-dest"
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      LifecycleConfiguration:
+        Rules:
+            - Id: 
+                Fn::Sub: "${scpDestinationPrefix}ddss-dest-cleanupPolicy"
+              AbortIncompleteMultipartUpload:
+                DaysAfterInitiation: 1
+              Status: Enabled
+            - Id: 
+                Fn::Sub: "${scpDestinationPrefix}ddss-dest-intelligentTieringPolicy"
+              Status: Enabled
+              Transition:
+                TransitionInDays: '1'
+                StorageClass: INTELLIGENT_TIERING
+      Tags:
+      - Key: "Name"
+        Value: 
+            Fn::Sub: "${scpDestinationPrefix}ddss-dest"
+      - Key: "Contact"
+        Value:
+            Ref: contact
+
+  ddssDestBucketBucketPolicy:
+    DependsOn: ddssDestBucket
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: 
+        Fn::Sub: "${scpDestinationPrefix}ddss-dest"
+      PolicyDocument:
+        Statement:
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+            - s3:ListBucket
+          Principal: 
+            AWS: 
+              Ref: scpStackPrincipal
+          Resource:
+            - Fn::Sub: "arn:aws:s3:::${scpDestinationPrefix}ddss-dest"
+            - Fn::Sub: "arn:aws:s3:::${scpDestinationPrefix}ddss-dest/*"
+
+# FS-S3 module
+  glueCrawlerPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - iam:GetRole
+          - iam:ListRolePolicies
+          - iam:GetRolePolicy
+          - logs:GetLogRecord
+          - logs:GetQueryResults
+          - logs:StopQuery
+          - logs:TestMetricFilter
+          - iam:ListRolePolicies
+          - logs:GetLogDelivery
+          - iam:GetRolePolicy
+          - glue:*
+          Resource: "*"
+        - Effect: Allow
+          Action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogGroups
+          - logs:StartQuery
+          - logs:GetLogEvents
+          - logs:Unmask
+          Resource: 
+            Fn::Sub: "arn:aws:logs:${AWS::Region}:*:log-group:/aws-glue/crawlers:*"
+        - Effect: Allow
+          Action:
+          - s3:ListBucket
+          Resource: 
+            Fn::Sub: "arn:aws:s3:::${fsS3Bucket}"
+        - Effect: Allow
+          Action:
+          - s3:GetObject
+          Resource: 
+            Fn::Sub: "arn:aws:s3:::${fsS3Bucket}/*"
+      ManagedPolicyName: 
+        Fn::Sub: "${stackName}_glue_policy"
+
+  glueCrawlerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: "Allow"
+          Principal:
+            Service: "glue.amazonaws.com"
+          Action:
+            - sts:AssumeRole
+      ManagedPolicyArns:
+        - Ref: glueCrawlerPolicy
+      RoleName: 
+        Fn::Sub: "${stackName}_glue_role"
+
+  glueDatabase:
+    DependsOn: glueCrawlerRole
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId:
+        Ref: AWS::AccountId
+      DatabaseInput:
+        Description: 
+          Fn::Sub: "Glue Database for ${stackNameCleaned}"
+        Name: 
+          Fn::Sub: "${stackNameCleaned}_glue_database"
+
+  glueCrawler:
+    Type: AWS::Glue::Crawler
+    Properties:
+      DatabaseName:
+        Ref: glueDatabase
+      Description: 
+        Fn::Sub: "Glue Crawler for ${stackNameCleaned}"
+      Name: 
+        Fn::Sub: "${stackNameCleaned}_glue_crawler"
+      Role:
+        Fn::GetAtt: [glueCrawlerRole, Arn]
+      Schedule: 
+        ScheduleExpression: "cron(7,22,37,52 * * * ? *)"
+      SchemaChangePolicy:
+        DeleteBehavior: DELETE_FROM_DATABASE
+        UpdateBehavior: UPDATE_IN_DATABASE
+      Targets:
+        S3Targets:
+          - Path: 
+              Ref: fsS3Bucket
+
+Outputs:
+  iaDestBucketARN:
+    Value: 
+      Fn::GetAtt: [ iaDestBucket, Arn ]
+  ddssDestBucketArn:
+    Value: 
+      Fn::GetAtt: [ ddssDestBucket, Arn ]
+  glueCrawlerRoleArn:
+    Value:
+      Fn::GetAtt: [glueCrawlerRole, Arn]
+  glueCrawlerDatabaseName:
+    Value:
+      Ref: glueDatabase
+  glueCrawlerName:
+    Value:
+      Ref: glueCrawler
