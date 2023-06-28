@@ -46,15 +46,15 @@ index=firewall sourcetype=cisco:asa 106023 OR 302020 OR 302021 OR 313005 OR 1060
 
 7. Configure this rule by leaving the **Source Field** set to `_raw` so the regex applies to the `_raw` field, and setting the **Drop Events Matching Regular Expression** field to the regex `(106023|302020|302021|313005|106015|106006|106001|302022|302023|302024|302025|302026|302027|4001\d+)`, then clicking **Apply** to apply the rule to the sample data.
 
-You may need to scroll down the list of sample data in the Data Preview section, but you'll notice events matching the regex are highlighted in red which indicates these events will be dropped.
-
 ![Splunk Cloud ingest actions interface with applied via regex with regex , and Apply button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/1_7.png?raw=true)
+
+You may need to scroll down the list of sample data in the Data Preview section, but you'll notice events matching the regex are highlighted in red which indicates these events will be dropped.  You may want to use the **Affected Events** tab in the `Data Preview` pane to see modified events.
 
 Also, notice how additional information around how much data was reduced is provided, including the number of events that were modified.  In the screenshot below, you can see that 8% of the events were dropped because of that regex!  That number might be different in your Splunk Cloud environment.
 
 ![Splunk Cloud ingest actions interface with applied via regex with dropped events and percentage chagned highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/1_8.png?raw=true)
 
-8. View the settings that will be applied to the `props.conf` and `transforms.conf` files by clicking the **Preview Config** button.  This is a good way to check to see how Splunk is going to apply this rule set.  No action is needed here, this step was just to show you how you can preview the configurations before they get deployed.  
+8. View the settings that will be applied to the `props.conf` and `transforms.conf` files by clicking the **Preview Config** button.  This is a good way to check to see how Splunk is going to apply this rule set.  The `RULESET` items in `props.conf` are new to ingest actions.  No action is needed here, this step was just to show you how you can preview the configurations before they get deployed.  
 9. Click the **Close** button.
 
 ![Splunk Cloud ingest actions interface showing preview of props.conf and transforms.conf with Preview Config, Save, and Close buttons highlighted in red and the props.conf and transforms.conf settings highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/1_9.png?raw=true)
@@ -129,7 +129,7 @@ Notice how there are credit card numbers in the events.
 
 ![Splunk Cloud ingest actions pane with web_purchase sourcetype selected, with ruleset name, select sourcetype, use web_purchases and Sample button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/3_2.png?raw=true)
 
-5. Create a new rule by clicking the **+ Add Rule**, and selecting the **Filter using Regular Expressions** rule.
+5. Create a new rule by clicking the **+ Add Rule**, and selecting the **Mask with Regular Expression** rule.
 
 ![Splunk Cloud ingest actions pane selecting Filter using Regular Expressions rule with the + Add Rule button and Filter using Regular Expression option highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/3_3.png?raw=true)
 
@@ -194,7 +194,7 @@ index=firewall sourcetype=cisco:asa 106023 OR 302020 OR 302021 OR 313005 OR 1060
 OR 302023 OR 302024 OR 302025 OR 302026 OR 302027 OR 4001*
 ```
 
-Notice that recent events exist for the first search, but not the second.  This indicates that ingest actions ruleset is correctly filtering out ICMP-related messages.
+Notice that recent events from the past few minutes (when the ingest actions rule started taking effect) exist for the first search, but not the second.  This indicates that ingest actions ruleset is correctly filtering out ICMP-related messages.
 
 ![Splunk Cloud search results of index=firewall sourcetype=cisco:asa with the search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/5_1.png?raw=true)
 
@@ -206,7 +206,7 @@ Notice that recent events exist for the first search, but not the second.  This 
 index=firewall sourcetype=cisco:estreamer:data
 ```
 
-Notice how the recent events are smaller now, and any key/value pairs with `N/A`, `null`, or `0`s have been removed from the event.
+Notice how the recent events from the past few minutes are smaller now because the ingest actions rules are taking effect, and any key/value pairs with `N/A`, `null`, or `0`s have been removed from the event.
 
 ![Splunk Cloud search results of index=firewall sourcetype=cisco:estreamer:data with the search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/5_3.png?raw=true)
 
@@ -216,7 +216,7 @@ Notice how the recent events are smaller now, and any key/value pairs with `N/A`
 index=purchases sourcetype=web_purchases
 ```
 
-Notice that the `credit_card` values are now redacted, and that only the last 4 digits of the credit card number are in the events.
+Notice that the `credit_card` values are now redacted from events in the past few minutes  (when the ingest actions rules started taking effect), and that only the last 4 digits of the credit card number are in the events.
 
 ![Splunk Cloud search results of index=purchases sourcetype=web_purchases with the search highlighted in red redacted credit card numbers in the events highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/5_3.png?raw=true)
 
