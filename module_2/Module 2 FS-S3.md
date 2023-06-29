@@ -82,7 +82,7 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 | sdselect * from federated:vpcflowlogs
 ```
 
-Please note that it may take several minutes for the proper AWS-based permissions to be deployed to Splunk so that it can search the data without error.
+Please note that it may take several minutes for the proper AWS-based permissions to be deployed to Splunk so that it can search the data without error.  If you do encounter an error, please wait a few minutes then try running the search again.
 
 ![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/1_8.png?raw=true)
 
