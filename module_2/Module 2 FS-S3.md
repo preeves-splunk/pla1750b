@@ -34,11 +34,11 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 ![Splunk Cloud add federated provider pane shown with Add Federated Search Provider, the Amazon S3 option, and Next button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/1_2.png?raw=true)
 
 3. On the `Add Amazon S3 Provider` pane, fill out the following fields:
-	- **Federated provider name:** `pla1750b_workshop`
-	- **AWS Account ID:** `139817522827`
-	- **Glue Data Catalog database**: This needs to start with the Splunk Cloud name but replace the `-` (dashes) with `_` (underscores), and ending in `_glue_database`.  See the image below for an example.
-	- **Glue Data Catalog tables**: `pla1750b_public_fs_s3_bucket`
-	- **Amazon S3 locations**: `s3://pla1750b-public-fs-s3-bucket/`
+	1. **Federated provider name:** `pla1750b_workshop`
+	2. **AWS Account ID:** `139817522827`
+	3. **Glue Data Catalog database**: This needs to start with the Splunk Cloud name but replace the `-` (dashes) with `_` (underscores), and ending in `_glue_database`.  See the image below for an example.
+	4. **Glue Data Catalog tables**: `pla1750b_public_fs_s3_bucket`
+	5. **Amazon S3 locations**: `s3://pla1750b-public-fs-s3-bucket/`
 
 ![Splunk Cloud Add Amazon S3 Provider pane shown with required input fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/1_3.png?raw=true)
 
@@ -51,11 +51,11 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 ![Splunk Cloud with settings display shown with Create federated index button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/1_5.png?raw=true)
 
 6. On the `Create a Federated Index` pane, fill out the following fields:
-	- **Federated Index Name**: `vpcFlowLogs`
-	- **Dataset Name**: `pla1750b_public_fs_s3_bucket`
-	- **Time Field**: `time`
-	- **Time Format**: `%UT`
-	- **Unix time field**: `_time`
+	1. **Federated Index Name**: `vpcFlowLogs`
+	2. **Dataset Name**: `pla1750b_public_fs_s3_bucket`
+	3. **Time Field**: `time`
+	4. **Time Format**: `%UT`
+	5. **Unix time field**: `_time`
 
 ![Splunk Cloud with Create a Federated Index pane shown with required fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/1_6.png?raw=true)
 
