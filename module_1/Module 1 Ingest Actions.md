@@ -282,6 +282,8 @@ If everything is configured correctly, the test should come back indicating it w
 
 At this point, `aws:cloudwatchlgos:vpcflow` data will start being sent to the S3 bucket.  You'll be using AWS VPC Flow Log data that has been routed to Amazon S3 via ingest actions in the next module.
 
+It's also worth mentioning that a subset of the AWS VPC Flow Logs can be sent to S3 or a Splunk destination using either the **Regex** or **Eval** filters for the Route to Destination rule, but in this workshop you're sending all of the VPC Flow Logs to the S3 destination.
+
 ## (Bonus) Task 7: Reverse Regex Golf
 
 You may have noticed the regex in task 2 was not the prettiest: `(([a-z0-9\_]+=(""|(b')?[0-]+(')?|TLS_NULL_WITH_NULL_NULL|Unknown|"Not Checked"|[0:]+|N\/A)\s))` .  
