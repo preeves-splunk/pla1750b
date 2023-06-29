@@ -91,6 +91,6 @@ Now that the DDSS destination has been added, you'll need to configure an index 
 3. Configure this index to use the DDSS destination configured in Task 2 by selecting the `Self Storage` option, and selecting the Amazon S3 bucket name added in Task 2.
 4. Finish configuring this index to use the DDSS destination by clicking the **Save** button.
 
-![Splunk Cloud Indexes Settings page for purchases index with Self Storage option, Please select option dropdown, and pla1750b-0603-qlfzgg20m0oa-ddss-det options, and Save button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_2.png?raw=true)
+![Splunk Cloud Indexes Settings page for purchases index with Self Storage option, Please select option dropdown, and pla1750b-0603-qlfzgg20m0oa-ddss-det options, and Save button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/3_1.png?raw=true)
 
 That's it!  After 90 days, the data from the `purchases` index will be sent to the DDSS destination bucket, just like the sales team requested.
