@@ -14,7 +14,7 @@ A few notes on how this lab is formatted:
 
 ## Task 1: Explore Splunk Cloud Environment
 
-1. Open a browser tab and navigate to the Splunk Cloud URL provided by Splukn Show.  Log in as the `sc_admin` user and provided password provided by Splunk Show.  If prompted, click the **I accept these terms** checkmark box, then the Ok button.
+1. Open a browser tab and navigate to the Splunk Cloud URL provided by Splunk Show.  Log in as the `sc_admin` user and provided password provided by Splunk Show.  If prompted, click the **I accept these terms** checkmark box, then the Ok button.
 
 ![Splunk Cloud login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_1.png?raw=true)
 
@@ -68,7 +68,7 @@ index=purchases
 
 1. In another browser tab, navigate to the Splunk Enterprise URL provided by Splunk Show and log in as the `admin` user with the password provided by Splunk Show.
 
-2. While there currently aren't any indexes on this hot yet, run the following search against the `_internal` index to ensure search is working properly.
+2. While there currently aren't any indexes on this installation of Splunk yet, run the following search against the `_internal` index to ensure search is working properly.
 
 ```
 index=_internal
