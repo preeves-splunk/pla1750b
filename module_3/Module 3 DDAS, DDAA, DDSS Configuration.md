@@ -22,12 +22,12 @@ The retention times for DDAS and DDAA storage are independent of each other, not
 
 1. In Splunk Cloud, navigate to the index configuration page by clicking **Settings** > **Indexes**.
 
-![Splunk Cloud Settings page with Settings and Indexes options highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/1_1.png?raw=true)
+![Splunk Cloud Settings page with Settings and Indexes options highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/1_1.png?raw=true)
 
 
 2. Start creating a new index by clicking the **New Index** button.
 
-![Splunk Cloud Indexes Settings page with New Index button highlighted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/1_2.png?raw=true)
+![Splunk Cloud Indexes Settings page with New Index button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/1_2.png?raw=true)
 
 3. Configure the new `devops` index by filling out the following fields:
 	- **Index name**: `devops`
@@ -36,7 +36,7 @@ The retention times for DDAS and DDAA storage are independent of each other, not
 	- **Archive Retention Period**:  `365` days
 4. Click the **Save** button
 
-![Splunk Cloud Indexes Settings page with devops index name, 0GB, 90 days retention, 365 day retention for DDAA, and save button highlgihted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/1_3.png?raw=true)
+![Splunk Cloud Indexes Settings page with devops index name, 0GB, 90 days retention, 365 day retention for DDAA, and save button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/1_3.png?raw=true)
 
 That's it!  The new `devops` will be deployed to the Splunk Cloud environment and ready for use within a few minutes.
 
@@ -49,32 +49,32 @@ Normally during this process the Splunk Cloud admin would work with an AWS admin
 1. Navigate to the index configuration page by clicking **Settings** > **Indexes**.
 2. Bring up the `purchases` configuration page by clicking **Edit** next to the `purchases` index.
 
-![Splunk Cloud Indexes Settings page Edit link for purchases index highlgihted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/2_1.png?raw=true)
+![Splunk Cloud Indexes Settings page Edit link for purchases index highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_1.png?raw=true)
 
 3. Open the `Self Storage Locations` page by clicking the `Self Storage` option, then clicking **Create a self storage location** .  This may open the page in a new tab or window, which is ok.
 
-![Splunk Cloud Indexes Settings page for purchases index with Create a self storage link highlgihted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/2_2.png?raw=true)
+![Splunk Cloud Indexes Settings page for purchases index with Create a self storage link highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_2.png?raw=true)
 
 4. Start creating the new DDSS destination by clicking the **New Self Storage Location** button.
 
-![Splunk Cloud Self Storage Locations page with New Self Storage Location button highlgihted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/2_3.png?raw=true)
+![Splunk Cloud Self Storage Locations page with New Self Storage Location button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_3.png?raw=true)
 
 5. Start the configuration process for the DDSS destination by filling out the following fields:
 	- **Title**: `ddss-dest`
 	- **AWS S3 bucket name**: Copy and paste the quoted bucket name in the text below the bucket name, and add `ddss-dest` to the end of it.  See the screenshot below for an example of this.  The name of the Amazon S3 bucket must start with the Splunk Cloud environment name, and have the randomly-generated characters in that text in order to avoid naming collisions in AWS.
 
-![Splunk Cloud New Self Storage Location Pane with title of ddss-dest, and AWS S3 bucket name of pla1750b-0603-qlfzgg20m0oa-ddss-dest for AWS S3 bucket name highlgihted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/2_4.png?raw=true)
+![Splunk Cloud New Self Storage Location Pane with title of ddss-dest, and AWS S3 bucket name of pla1750b-0603-qlfzgg20m0oa-ddss-dest for AWS S3 bucket name highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_4.png?raw=true)
 
 6. Generate the Amazon S3 bucket policy by clicking the  **Generate** button.
 
 Notice how Splunk Cloud generated and provided the Amazon S3 Bucket Policy that will need to be applied to the Amazon S3 bucket that will store the DDSS data.  Normally this would need to be shared with the AWS administrator so it can be applied to the destination Amazon S3 bucket.
 
-![Splunk Cloud New Self Storage Location Pane with Generate button for AWS S3 bucket policy highlgihted in red, and bucket policy pane highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/2_5.png?raw=true)
+![Splunk Cloud New Self Storage Location Pane with Generate button for AWS S3 bucket policy highlgihted in red, and bucket policy pane highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_5.png?raw=true)
 
 7. Test the DDSS Destination configuration by clicking the **Test** button next to the "Test bucket policy" line.
 8. If the test comes back a `Success!`, finish adding the DDSS destination by clicking the **Submit** button.  If the test does not come back successful, review the instructions from step 5, then try again, or ask for assistance.
 
-![Splunk Cloud New Self Storage Location Pane with Test button for Test bucket policy and Submit button highlgihted in red, and Success! text highlighted in green](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/2_6.png?raw=true)
+![Splunk Cloud New Self Storage Location Pane with Test button for Test bucket policy and Submit button highlgihted in red, and Success! text highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_6.png?raw=true)
 
 
 That's it!  The new DDSS destination will be added to the Splunk Cloud environment.
@@ -86,11 +86,11 @@ Now that the DDSS destination has been added, you'll need to configure an index 
 1. Navigate to the index configuration page by clicking **Settings** > **Indexes**.
 2. Bring up the `purchases` configuration page by clicking **Edit** next to the `purchases` index.
 
-![Splunk Cloud Indexes Settings page Edit link for purchases index highlgihted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/2_1.png?raw=true)
+![Splunk Cloud Indexes Settings page Edit link for purchases index highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_1.png?raw=true)
 
 3. Configure this index to use the DDSS destination configured in Task 2 by selecting the `Self Storage` option, and selecting the Amazon S3 bucket name added in Task 2.
 4. Finish configuring this index to use the DDSS destination by clicking the **Save** button.
 
-![Splunk Cloud Indexes Settings page for purchases index with Self Storage option, Please select option dropdown, and pla1750b-0603-qlfzgg20m0oa-ddss-det options, and Save button highlgihted in red](https://github.com/preeves-splunk/pla1750b-internal/blob/module3/module3/module_3/2_2.png?raw=true)
+![Splunk Cloud Indexes Settings page for purchases index with Self Storage option, Please select option dropdown, and pla1750b-0603-qlfzgg20m0oa-ddss-det options, and Save button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/2_2.png?raw=true)
 
 That's it!  After 90 days, the data from the `purchases` index will be sent to the DDSS destination bucket, just like the sales team requested.
