@@ -36,7 +36,7 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 3. On the `Add Amazon S3 Provider` pane, fill out the following fields:
 	1. **Federated provider name:** `pla1750b_workshop`
 	2. **AWS Account ID:** `139817522827`
-	3. **Glue Data Catalog database**: This needs to start with the Splunk Cloud name but replace the `-` (dashes) with `_` (underscores), and ending in `_glue_database`.  See the image below for an example.
+	3. **Glue Data Catalog database**: This needs to start with the Splunk Cloud name but replace the `-` (dashes) with `_` (underscores), and ending in `_glue_database`.  For example, with a Splunk Cloud name of `pla1750b-0603`, this would need to be set to `pla1750b_0603_glue_database`.  See the image below for an example of what the Splunk Cloud name is.
 	4. **Glue Data Catalog tables**: `pla1750b_public_fs_s3_bucket`
 	5. **Amazon S3 locations**: `s3://pla1750b-public-fs-s3-bucket/`
 
