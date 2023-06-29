@@ -114,6 +114,10 @@ In the real world, you would export these results and send them to the complianc
 
 ![Splunk Cloud with results from search| sdselect count from federated:vpcflowlogs groupby source shown with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/2_3.png?raw=true)
 
+Again, in the real world, you would export these results and send them to the compliance team.
+
+That's it!  In this task, you were able to search data in an Amazon S3 bucket using Splunk without ingesting that data.
+
 
 ## Task 3: Search Amazon S3 for Security Investigation
 
@@ -192,3 +196,5 @@ Notice how CIM field extractions like `dest_port`, and `src_ip` are now in the e
 ![Splunk Cloud with results from search shown](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/3_7.png?raw=true)
 
 Again, in the real world, you would export these results and send them to the SOC for further investigation.
+
+That's it!  In this task, you were able to help the SOC in their investigation by searching data in an Amazon S3 bucket using Splunk without ingesting any data.
