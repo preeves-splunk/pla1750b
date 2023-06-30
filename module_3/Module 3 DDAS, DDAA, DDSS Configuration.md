@@ -4,7 +4,7 @@ In this module you'll be creating some additional indexes in Splunk Cloud, and c
 
 - Dynamic Data Active Searchable (DDAS): This is used for searchable data in Splunk Cloud.
 - Dynamic Data Active Archive (DDAA): This is where non-searchable data is stored in Splunk Cloud that needs to be possibly be temporarily made searchable again in Splunk Cloud.  This is a great storage tier to use for any data that you don't want to delete because you want to easily restore it into Splunk Cloud for a period of time.
-- Dynamic Data Self-Storage (DDSS): This is a storage tier where data that ages out of Splunk Cloud is exported to a customer-owned Amazon S3 or Google Cloud Platform Google Cloud Storage (GCS) account.  With DDSS data, the customer is directly responsible for any data storage or rehydration fees.  In module 4, you'll be walking through this process of downloading, rehydrating, and searching data from an Amazon S3 bucket with DDSS data sent to it.
+- Dynamic Data Self-Storage (DDSS): This is a storage tier where data that ages out of Splunk Cloud is exported to a customer-owned Amazon S3 or Google Cloud Platform Google Cloud Storage (GCS) account.  With DDSS data, the customer is directly responsible for any data storage or rehydration fees.   Data sent to a DDSS destination needs to be "rehydrated" by Splunk before it is searchable, just like other data frozen by Splunk Enterprise.  In module 4, you'll be walking through this process of downloading, rehydrating, and searching data from an Amazon S3 bucket with DDSS data sent to it.
 
 Additional information about DDAS, DDAA, and DDSS storage can be found in the [Splunk Cloud Platform Service Description](https://docs.splunk.com/Documentation/SplunkCloud/latest/Service/SplunkCloudservice#Storage).
 
