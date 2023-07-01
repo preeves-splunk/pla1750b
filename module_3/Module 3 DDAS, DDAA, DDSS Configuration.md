@@ -94,3 +94,34 @@ Now that the DDSS destination has been added, you'll need to configure an index 
 ![Splunk Cloud Indexes Settings page for purchases index with Self Storage option, Please select option dropdown, and pla1750b-0603-qlfzgg20m0oa-ddss-det options, and Save button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/3_1.png?raw=true)
 
 That's it!  After 90 days, the data from the `purchases` index will be sent to the DDSS destination bucket, just like the sales team requested.
+
+## Task 4: Review DDAA Restore Orocess (bonus task!)
+
+This this task, you'll be reviewing how to temporarily retore data from DDAA so it's searchable.  In this task you'll just be reviewing screenshots and steps, not actually changing or clicking anything in the Splunk web interface.
+
+Once requested, DDAA data is searchable within 24 hours of it being restored and is searchable for up to 30 days.  Also, you are only able to restore the equivelant of 10% of your DDAS storage entitlement from DDAA at a time.  Restored DDAA data can be forced to expire before the 30 days is over as well.
+
+The steps below are just informational, you won't be following along in the web interface.  These instructions would be for restoring data from the `aws` index between June 4, 2023 and June 17th, 2023.
+
+1. To start restoring data, you would navigate to **Settings** > **Indexes**, then click the **Restore** link next to the index you.
+
+![Splunk Cloud Indexes Settings page with Restore link for aws index highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_1.png?raw=true)
+
+2. You would then select the date range you need to to restore data from by modifying the two time range pickers in the `Restore Archive` pane to indicate the earliest and latest data to restore, and optionally an email address to be notified of updates on the restore task.
+3. After selecting the date range to restore data from, you would click the **Check Size** button to verify that you have enough space to restore the data.
+4. You would click the **Restore** button to start the restore process
+
+Notice how in the screenshot below, the Total Restore Size of the data that will be restored is listed.
+
+![Splunk Cloud Restore Archive pane for aws index shown with time range options of 6/4/2023 to 6/17/2023, Check Size and Restore buttons highlgihted in red, options from above numbered, and Total Restore size of 1.05GB highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_2.png?raw=true)
+
+5. You would then click the **Restore** button on the `Confirmation` pop-up to start the restore process.
+
+![Splunk Cloud Restore Archive Confirmation pop-up for restore job show with Restore button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_2.png?raw=true)
+
+6. At this point, Splunk Cloud will begin the restore process for the selected index on the selected times.  You can see the restore job information on the `Restore Archive` pane for this index now, with `Job Status` of `Pending`.  This job status will change as the restore job progresses.
+
+Notice how in the screenshot below you can now see the restore job status, and the job status.
+
+![Splunk Cloud Restore Restore Archive pane for aws index shown with restore job information highlgihted in green](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_2.png?raw=true)
+
