@@ -80,4 +80,4 @@ index=_internal
 
 3. In a terminal window, or your preferred SSH client, open an SSH session to the *Splunk Enterprise* host using the provided host name over port 2222.  Utilize the username and password provided by Splunk Show.  Once you have logged in, validate that you are able to run commands utilizing `sudo` by executing `sudo whoami`.  The expected command response is `root`.
 
-![Graphic showing terminal windo after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v2/module_0/0_11.png?raw=true)
+![Graphic showing terminal windo after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v2/module_0/0_12.png?raw=true)
