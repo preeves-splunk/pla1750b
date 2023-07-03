@@ -38,6 +38,10 @@ The retention times for DDAS and DDAA storage are independent of each other, not
 
 ![Splunk Cloud Indexes Settings page with devops index name, 0GB, 90 days retention, 365 day retention for DDAA, and save button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/1_3.png?raw=true)
 
+5. If promtoed, click the **Continue** button
+
+![Splunk Cloud showing Saving New Index Pane with contiue button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/1_4.png?raw=true)
+
 That's it!  The new `devops` will be deployed to the Splunk Cloud environment and ready for use within a few minutes.
 
 ## Task 2: Configure a DDSS destination
