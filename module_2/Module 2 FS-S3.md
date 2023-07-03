@@ -6,7 +6,7 @@ Specifically for this module and for Forthly, after configuring FS-S3 in this mo
 1. Demonstrating to auditors that AWS VPC Flow Log data is being kept in S3 for long retention times
 2. Retrieve data from S3 that has aged out of Splunk to help the SOC with a security investigation
 
-You'll be searching against a a different Amazon S3 bucket than what you configured in the last module.  This new S3 bucket has more data to search against what Splunk has placed there via ingest actions over the past few minutes!
+You'll be searching against a different Amazon S3 bucket than what you configured in the last module.  This new S3 bucket has more data to search against what Splunk has placed there via ingest actions over the past few minutes!
 
 FS-S3 has a few parts and there are a few different steps to configure it that involve both the Splunk Admin and AWS Admin.  FS-S3 uses Splunk and AWS-based technologies like Amazon S3, and AWS Glue to search the data in the S3 buckets.  The full documentation and configuration instructions will be available once FS-S3 is released but the configuration overview is:
 
@@ -15,7 +15,7 @@ FS-S3 has a few parts and there are a few different steps to configure it that i
 3. Use an AWS Glue crawler ([https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html](https://docs.aws.amazon.com/glue/latest/dg/add-crawler.html)) to scan over the files in the Amazon S3 bucket to determine the file schema, and store it in the Glue database and table.
 4. Configure a Federated Search Provider in Splunk to search the data in the Amazon S3 bucket.
 
-All of these AWS-side components have already been configured for you in this module, so you'll only need to handle that fourth part of configuring FS-S3 in Splunk.  A CloudFormation template containing the resource definitions and configurations used to configure the AWS-side components can be found [here](https://github.com/preeves-splunk/pla1750b/blob/v1/cloudformation-per-attendee.yaml).
+All of these AWS-side components have already been configured for you in this module, so you'll only need to handle that fourth part of configuring FS-S3 in Splunk.  A CloudFormation template containing the resource definitions and configurations used to configure the AWS-side components can be found [here](https://github.com/preeves-splunk/pla1750b/blob/main/cloudformation-per-attendee.yaml).
 
 It’s worth noting here that in this workshop you're only searching data sent to an Amazon S3 bucket via ingest actions.  However, that’s only due to workshop constraints.  There’s a wide variety of data formats Amazon Glue can read ([https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-format.html](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-format.html)) that are not related to Splunk.  If you have data already in an Amazon S3 bucket that can be read by Amazon Glue, it can be searched by FS-S3 as well regardless of what generated the data.
 
@@ -36,7 +36,7 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 3. On the `Add Amazon S3 Provider` pane, fill out the following fields:
 	1. **Federated provider name:** `pla1750b_workshop`
 	2. **AWS Account ID:** `139817522827`
-	3. **Glue Data Catalog database**: This needs to start with the Splunk Cloud name but replace the `-` (dashes) with `_` (underscores), and ending in `_glue_database`.  For example, with a Splunk Cloud name of `pla1750b-0603`, this would need to be set to `pla1750b_0603_glue_database`.  See the image below for an example of what the Splunk Cloud name is.
+	3. **Glue Data Catalog database**: This needs to start with the Splunk Cloud name but replace the `-` (dashes) with `_` (underscores), and ending in `_glue_database`.  For example, with a Splunk Cloud name of `pla-shw-9a380633eec04f`, this would need to be set to `pla_shw_9a380633eec04f_glue_database`.  See the image below for an example of what the Splunk Cloud name is.
 	4. **Glue Data Catalog tables**: `pla1750b_public_fs_s3_bucket`
 	5. **Amazon S3 locations**: `s3://pla1750b-public-fs-s3-bucket/`
 
@@ -100,7 +100,7 @@ The new `sdselect` command is used to query data stored in Amazon S3 made search
 
 ![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs with search highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/2_1.png?raw=true)
 
-2. Modify the time range picker to be June 13th 2023 by clicking **All time**, then setting the **Date Range** to be between **6/13/2023 00:00:00** and **6/13/2023 24:00:00**, then re-run the query.  
+2. Modify the time range picker to be June 13th 2023 by clicking **All time**, then setting the **Date Range** to be between **6/13/2023** and **6/13/2023**, then re-run the query.  
 
 ![Splunk Cloud with results from search | sdselect * from federated:vpcflowlogs shown and time range picker being changed with search and time range highlighted in red and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/2_2.png?raw=true)
 
@@ -125,15 +125,17 @@ The Forthly SOC would like help investigating an ongoing security incident.  Spe
 
 Just like the previous task, for each one of these steps read the description for what the search is trying to accomplish then run the query.
 
-1. Make sure the base query runs over the timeframe of **June 17th through June 23rd**:
+1. Make sure the base query runs:
 
 ```
 | sdselect * from federated:vpcflowlogs
 ```
 
+2. Set the search the timeframe of **June 17th through June 23rd**:
+
 ![Splunk Cloud with results from search| sdselect * from federated:vpcflowlogs groupby source shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/3_1.png?raw=true)
 
-2. Query for only the time and event fields:
+3. Query for only the time and event fields:
 
 ```
 | sdselect time, event from federated:vpcflowlogs
@@ -143,7 +145,7 @@ Notice how only the selected `time` and `event` fields are being returned.
 
 ![Splunk Cloud with results from search | sdselect time, event from federated:vpcflowlogs groupby source shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/3_2.png?raw=true)
 
-3. Query for just events in the AWS Account ID `958172947816`:
+4. Query for just events in the AWS Account ID `958172947816`:
 
 ```
 | sdselect time, event from federated:vpcflowlogs where source=958172947816
@@ -153,7 +155,7 @@ Notice how only events involving the AWS account number `958172947816` are shown
 
 ![Splunk Cloud with results from search | sdselect time, event from federated:vpcflowlogs where source=958172947816 shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/3_3.png?raw=true)
 
-4. Add a filter to just look for events from `eni-0212b9abe7101dbcb`:
+5. Add a filter to just look for events from `eni-0212b9abe7101dbcb`:
 
 ```
 | sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%"
@@ -163,7 +165,7 @@ Notice how only events with the string `eni-0212b9abe7101dbcb` are returned.
 
 ![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" shown over June 17th through June 23rd timeframe ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/3_4.png?raw=true)
 
-5. Increase the `LIMIT` to make sure all of the events are being retrieved from the Amazon S3 bucket
+6. Increase the `LIMIT` to make sure all of the events are being retrieved from the Amazon S3 bucket
 
 ```
 | sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" LIMIT 100000000
@@ -173,7 +175,7 @@ Notice how there are more than the default 100,000 events being returned.
 
 ![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" LIMIT 100000000 over June 17th through June 23rd timeframe ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/3_5.png?raw=true)
 
-6. Data retrieved via the `sdselect` command doesn't know about sourcetypes or search-time field extractions, other SPL commands like `rex` need to be used in order to extract fields at search time.  Use the query below to extract the relevant CIM fields for VPC Flow Logs  (the regular expression was taken from the Splunk Add-on for Amazon Web Services):
+7. Data retrieved via the `sdselect` command doesn't know about sourcetypes or search-time field extractions, other SPL commands like `rex` need to be used in order to extract fields at search time.  Use the query below to extract the relevant CIM fields for VPC Flow Logs  (the regular expression was taken from the Splunk Add-on for Amazon Web Services):
 
 ```
 | sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" LIMIT 100000000
@@ -184,7 +186,7 @@ Notice how CIM field extractions like `dest_port`, and `src_ip` are now in the e
 
 ![Splunk Cloud with results from search shown ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/3_6.png?raw=true)
 
-7. Add a `stats` command to calculate the total number of bytes transmitted between the suspect ENI, each source IP it held, and each destination IP it talked to:
+8. Add a `stats` command to calculate the total number of bytes transmitted between the suspect ENI, each source IP it held, and each destination IP it talked to:
 
 ```
 | sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" LIMIT 100000000
