@@ -117,11 +117,33 @@ Notice how in the screenshot below, the Total Restore Size of the data that will
 
 5. You would then click the **Restore** button on the `Confirmation` pop-up to start the restore process.
 
-![Splunk Cloud Restore Archive Confirmation pop-up for restore job show with Restore button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_2.png?raw=true)
+![Splunk Cloud Restore Archive Confirmation pop-up for restore job show with Restore button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_3.png?raw=true)
 
-6. At this point, Splunk Cloud will begin the restore process for the selected index on the selected times.  You can see the restore job information on the `Restore Archive` pane for this index now, with `Job Status` of `Pending`.  This job status will change as the restore job progresses.
+6. At this point, Splunk Cloud will begin the restore process for the selected index on the selected times.  You can see the restore job information on the `Restore Archive` pane for this index now, with `Job Status` of `Pending`.  This job status will change as the restore job progresses.  Again, this restoration request will take about 24 hours to finish.
 
 Notice how in the screenshot below you can now see the restore job status, and the job status.
 
-![Splunk Cloud Restore Restore Archive pane for aws index shown with restore job information highlgihted in green](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_2.png?raw=true)
+![Splunk Cloud Restore Restore Archive pane for aws index shown with restore job information highlgihted in green](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_4.png?raw=true)
 
+
+7. After 24 hours the restore job has a status of `Success`:
+
+![Splunk Cloud Restore Restore Archive pane for aws index shown with restore job information with status of Success highlgihted in green](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_5.png?raw=true)
+
+A screenshot showing a restoration request notification email for a similar DDAA restore job can be seen below:
+
+![Screenshot of a DDAA restoration notificaiton email ](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_6.png?raw=true)
+
+And data is searchable for the `aws` index for the requested time period:
+
+![Splunk Cloud search results for index=aws | head 100 over the time frame of June 4th through June 23rd ](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_7.png?raw=true)
+
+8. On the Restore Archive pane for the `aws` index, the restore job can also be expired manually, before the 30-day period is over.  This can be useful to free up space for additional data can be restored.
+
+![Splunk Cloud Restore Restore Archive pane for aws index shown with restore job Clear link highlgihted in red ](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_8.png?raw=true)
+
+Once the restore job has expired, either becuase the 30-day period has lapsed or the job was cleared manually before the 30-day period ended, the job status will change to `Cleared`:
+
+![Splunk Cloud Restore Restore Archive pane for aws index shown with restore job Cleared status highlgihted in green ](https://github.com/preeves-splunk/pla1750b/blob/module3/module_3/4_9.png?raw=true)
+
+That's it!  Thanks for joining us on this optional review and tour of restoring DDAA data.
