@@ -67,9 +67,10 @@ index=purchases
 
 1. In another browser tab, navigate to the Splunk Enterprise URL provided by Splunk Show and log in as the `admin` user with the password provided by Splunk Show.
 
+![Splunk Enterprise login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v2/module_0/0_9.png?raw=true)
+
 2. While there currently aren't any indexes on this installation of Splunk yet, run the following search against the `_internal` index to ensure search is working properly.
 
-![Splunk Enterprise login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v2/module_0/0_9.png?raw=true)
 
 
 ```
