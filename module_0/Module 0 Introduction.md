@@ -19,7 +19,14 @@ A few notes on how this lab is formatted:
 
 ![Splunk Cloud Terms of Service screen with I accept these terms and Ok button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_2.png?raw=true)
 
-2. To discover what data sourcetypes and indexes are available in the Splunk Cloud instance, navigate to the **Search & Reporting app** under the **Apps** menu in the upper left hand corner of your browser.  Utilize the following search by copying and pasting it into the Search field and clicking the magnifying glass to the right to execute the search.
+2. If at any point you encounter a pop-up notifying you that you can change the color theme between light and dark mode, or that you have been upgraded to a Victoria experience, feel free to dismiss these items:
+
+![Splunk Cloud color scheme pop-up with Skip Tour text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_13.png?raw=true)
+
+![Splunk Cloud Victoria upg rade pop-up with Don't show me this again button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_14.png?raw=true)
+
+
+3. To discover what data sourcetypes and indexes are available in the Splunk Cloud instance, navigate to the **Search & Reporting app** under the **Apps** menu in the upper left hand corner of your browser.  Utilize the following search by copying and pasting it into the Search field and clicking the magnifying glass to the right to execute the search.
 
 ![Splunk Cloud main screen with Search & Reporting app link highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_3.png?raw=true)
 
@@ -31,7 +38,7 @@ A few notes on how this lab is formatted:
 
 If there is data available, search through each of the following indexes in turn to look at the available data.  Note that each of the searches should return results from the past 30 minutes.
 
-3. Search the `main` index:
+4. Search the `main` index:
 
 ```
 index=main
@@ -39,7 +46,7 @@ index=main
 
 ![Splunk Cloud search results for index=main with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_5.png?raw=true)
 
-4. Search the AWS VPC Flow Logs:
+5. Search the AWS VPC Flow Logs:
 
 ```
 index=aws sourcetype=aws:cloudwatchlogs:vpcflow
@@ -47,7 +54,7 @@ index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 
 ![Splunk Cloud search results for index=aws \sourcetype=aws:cloudwatchlogs:vpcflow with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_6.png?raw=true)
 
-5. Search the firewall events:
+6. Search the firewall events:
 
 ```
 index=firewall
@@ -55,7 +62,7 @@ index=firewall
 
 ![Splunk Cloud search results for index=firewall with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_7.png?raw=true)
 
-6. Search the purchase records:
+7. Search the purchase records:
 
 ```
 index=purchases
