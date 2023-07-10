@@ -19,15 +19,23 @@ In this task, you'll be using the Splunk Enterprise host to download and rehydra
 sudo mkdir /opt/splunk/ddss-rehydrate/
 ```
 
-3. Download the staged DDSS data from the Amazon S3 bucket by running the following command:
+3. Run the following search for **All time** in Splunk Cloud to get the command to download the staged DDSS data from the Amzon S3 bucket:
 
 ```
-aws s3 sync s3://pla1750b-public-ddss-s3-bucket/ /opt/splunk/ddss-rehydrate/
+index=main sourcetype=httpevent
+```
+
+![Splunk Cloud search results of index=main sourcetype=httpevent with search highlighted in red, All time and search buttons highlighted in red, and search results of sudo AWS_ACCESS_KEY_ID=ABCD1239582357161 AWS_SECRET_ACCESS_KEY=as9du98au8ht111111ChillOutNotARealSecret aws s3 sync s3://pla1750b-public-ddss-s3-bucket/ /opt/splunk/ddss-rehydrate/ highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/module_4/1_5.png?raw=true)
+
+4. Run the retrieved search to download the staged DDSS data from the Amazon S3 bucket.  The command should look something like this, but the credentials will be different:
+
+```
+sudo AWS_ACCESS_KEY_ID=ABCD1239582357161 AWS_SECRET_ACCESS_KEY=as9du98au8ht111111ChillOutNotARealSecret aws s3 sync s3://pla1750b-public-ddss-s3-bucket/ /opt/splunk/ddss-rehydrate/
 ```
 
 ![Terminal window with results of aws s3 sync command downloading files via sudo aws s3 sync s3://pla1750b-public-ddss-s3-bucket/ /opt/splunk/ddss-rehydrate/](https://github.com/preeves-splunk/pla1750b/blob/main/module_4/1_1.png?raw=true)
 
-4. Rehydrate all of the downloaded files from the Amazon S3 bucket that belong to the `purchases` index by running this command:
+5. Rehydrate all of the downloaded files from the Amazon S3 bucket that belong to the `purchases` index by running this command:
 
 ```
 for d in /opt/splunk/ddss-rehydrate/purchases/*; do sudo /opt/splunk/bin/splunk rebuild "$d" ; done
@@ -37,13 +45,13 @@ This command might take a few minutes to complete.  Also, it's ok if error messa
 
 ![Terminal window with results of splunk rebuild command for d in /opt/splunk/ddss-rehydrate/purchases/*; do sudo /opt/splunk/bin/splunk rebuild "$d" ; done](https://github.com/preeves-splunk/pla1750b/blob/main/module_4/1_2.png?raw=true)
 
-5. Create a new index named `ddss-rehydrate` to hold this data, specifying `/opt/splunk/ddss-rehydrate/purchases` as the `thawdPath`.  The easiest way to do this is to run the command below
+6. Create a new index named `ddss-rehydrate` to hold this data, specifying `/opt/splunk/ddss-rehydrate/purchases` as the `thawdPath`.  The easiest way to do this is to run the command below
 
 ```
 echo -e "[ddss-rehydrate]\nhomePath = /opt/splunk/var/lib/splunk/$_index_name/db\ncoldPath = /opt/splunk/var/lib/splunk/$_index_name/colddb\nthawedPath = /opt/splunk/ddss-rehydrate/purchases\nfrozenTimePeriodInSecs = 4294967295\nmaxTotalDataSizeMB = 4294967295" | sudo tee /opt/splunk/etc/system/local/indexes.conf > /dev/null
 ```
 
-6. Restart Splunk by running the following command
+7. Restart Splunk by running the following command
 
 ```
 sudo /opt/splunk/bin/splunk restart
@@ -51,8 +59,8 @@ sudo /opt/splunk/bin/splunk restart
 
 ![Terminal window with results of restarting splunk using sudo /opt/splunk/bin/splunk restart](https://github.com/preeves-splunk/pla1750b/blob/main/module_4/1_3.png?raw=true)
 
-7. Navigate to the Splunk Enterprise URL provided by Splunk Show and log in as the `admin` user with the password provided by Splunk Show.
-8. To verify the data rehydrated successfully and is searchable, verify that the following search returns results for `All time`:
+8. Navigate to the Splunk Enterprise URL provided by Splunk Show and log in as the `admin` user with the password provided by Splunk Show.
+9. To verify the data rehydrated successfully and is searchable, verify that the following search returns results for `All time`:
 
 ```
 index=ddss-rehydrate sourcetype=web_purchases | head 100
