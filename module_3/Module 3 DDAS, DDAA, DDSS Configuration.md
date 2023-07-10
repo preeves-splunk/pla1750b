@@ -40,7 +40,7 @@ The retention times for DDAS and DDAA storage are independent of each other, not
 
 5. If promtoed, click the **Continue** button
 
-![Splunk Cloud showing Saving New Index Pane with contiue button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_3/1_4.png?raw=true)
+![Splunk Cloud showing Saving New Index Pane with contiue button highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_3/1_5.png?raw=true)
 
 That's it!  The new `devops` will be deployed to the Splunk Cloud environment and ready for use within a few minutes.
 
