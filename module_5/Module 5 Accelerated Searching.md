@@ -74,7 +74,7 @@ You’ll be using the `collect` command and summary indexing in this task.  Here
 - Use the `testmode` option for the collect command when writing and testing the search to avoid writing data to the destination index.
 - By default, `collect` will set the sourcetype to `stash`, which will not impact license utilization.  If you set the sourcetype in the `collect` command to something other than `stash`, this will impact license usage.
 - Use a `marker` of `search_name` to make it easy to figure out what search the summarized data came from 
-- Make the search summarizing the data performance to minimize Splunk resource (and SVC) utilization.
+- Make the search summarizing the data performant to minimize Splunk resource (and SVC) utilization.
 
 Follow these instructions to configure the summary indexing:
 
@@ -144,7 +144,7 @@ Notice how the data can be sent to a table just like if the original `timechart`
 | stats sum(eventSize) as total_event_size by index
 ```
 
-Notice how the event sizes per index are significantly different, with the summarized data in the `summary` index is smaller than the raw events in the `purchases` index take up more space.
+Notice how the event sizes per index are significantly different, with summarized events in the `summary` index being significantly smaller than the raw events in the `purchases` index.
 
 ## Task 3: Metricize Events
 

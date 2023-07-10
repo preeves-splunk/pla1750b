@@ -13,6 +13,8 @@ In Splunk Cloud, ingest actions works by modifying `props.conf` and `transforms.
 
 In this module, you will use ingest actions to clean up, reduce, redact, and re-route data in Splunk before it gets ingested.  You'll build out several rulesets, then towards the end of the module check the work.  If you're curious, the full documentation for ingest actions can be found on [docs.splunk.com](https://docs.splunk.com/Documentation/SplunkCloud/latest/Data/DataIngest).
 
+Even though we'll be using ingest actions for this module, the same work can be done on Splunk's new data stream processor [Edge Processor](https://docs.splunk.com/Documentation/SplunkCloud/latest/EdgeProcessor/AboutEdgeProcessorSolution).
+
 ## Task 1: Reduce Data Ingestion Volume by Dropping Non-Value Events
 
 After investigating the Splunk Cloud environment, you've discovered that firewall-related events in the  `firewall` index are the largest data source.  You discussed it with the networking and security teams, and have all come to the conclusion that any events related to ICMP (ping) do not need to be ingested into Splunk.  In this task, you'll be configuring Splunk Cloud to drop those events before they're ingested.
@@ -138,13 +140,15 @@ Notice how there are credit card numbers in the events.
 	- **Replace Expression:** `\1XXXX\3`
 7. Click the **Apply** button.
 
+Notice how in the Data Preview pane you can now see that only the remaining 4 digits of the credit card number are shown, and not the full credit card number.
+
 ![Splunk Cloud ingest actions pane selecting Filter using Regular Expressions rule with regular expressions and Apply button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/3_4.png?raw=true)
 
 8. Save and deploy this rule set by clicking the **Save** button.
 
 ## Task 4: Change Destination Index
 
-The cloud storage team has needs all cloud storage-related events sent to the `storage_services` index, but right now those events are being routed to the `main` index.  In this task, you will re-route those events to the correct index.
+The cloud storage team has needs all cloud storage-related events sent to the `storage_services` index, but right now those events are being routed to the `main` index.  In this task, you will re-route those events to the correct index.  It's consdiered a best practice to set the index value at ingestion time, but sometimes, like with ingesting O365 logs, that cannot be done and the second best way is to use ingest actions.
 
 1. Run the search below to view the cloud storage-related events in the `main` index:
 
@@ -254,7 +258,7 @@ index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 
 ![Splunk Cloud ingest actions page with the Destinations tab and Create new Destination text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/6_2.png?raw=true)
 
-3. Configure the first set of destination settings by filling out the following fields in the `Create New Destination: Step 1` pane:
+3. Configure the first set of destination settings by setting the following fields in the `Create New Destination: Step 1` pane (leave all other fields or settings as default):
 	- **Destination Title:** `ia-dest`
 	- **S3 Bucket Name:** add `ia-dest` to the end of the pre-populated text.  When sending to an S3 destination using ingest actions, the bucket name must start with the Splunk Cloud stack name, and the randomly defined prefix.
 4. Click the **Next** button.
@@ -286,7 +290,7 @@ It's also worth mentioning that a subset of the AWS VPC Flow Logs can be sent to
 
 ## (Bonus) Task 7: Reverse Regex Golf
 
-You may have noticed the regex in task 2 was not the prettiest: `(([a-z0-9\_]+=(""|(b')?[0-]+(')?|TLS_NULL_WITH_NULL_NULL|Unknown|"Not Checked"|[0:]+|N\/A)\s))` .  
+You may have noticed the regex in task 2 was not the prettiest: `([a-z0-9\_]+=(""|(b')?[0-]+(')?|TLS_NULL_WITH_NULL_NULL|Unknown|"Not Checked"|[0:]+|N\/A)\s)` .  
 
 On regex101.com, with PCRE2 selected, it takes 7067 steps to process the sample event below.
 
