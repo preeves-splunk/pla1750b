@@ -124,7 +124,7 @@ Notice how there are credit card numbers in the events.
 
 2. Create a new ingest actions ruleset by clicking **Settings** > **Ingest Actions**, then clicking **New Ruleset**.
 3. Enter a descriptive **Ruleset Name**, such as `web_purchases-redaction` to indicate that this ruleset applies to the `web_purchases` sourcetype and that this ruleset is intended to redact data.
-4. Configure the ingest actions ruleset to run against the `web_purchases` sourcetype data by clicking the **Select sourcetype...** box, typing `web_purchase`, and clicking **Use web_purchase**.
+4. Configure the ingest actions ruleset to run against the `web_purchases` sourcetype data by clicking the **Select sourcetype...** box, typing `web_purchases`, and clicking **Use web_purchases**.
 5. Click the **Sample** button to retrieve sample data and populate the Data Preview pane.
 
 ![Splunk Cloud ingest actions pane with web_purchase sourcetype selected, with ruleset name, select sourcetype, use web_purchases and Sample button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/3_2.png?raw=true)
@@ -281,6 +281,8 @@ If everything is configured correctly, the test should come back indicating it w
 ![Splunk Cloud ingest actions ruleset page with Route to Destination rule being configured with ruleset and Apply and Save buttons highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/6_6.png?raw=true)
 
 At this point, `aws:cloudwatchlgos:vpcflow` data will start being sent to the S3 bucket.  You'll be using AWS VPC Flow Log data that has been routed to Amazon S3 via ingest actions in the next module.
+
+It's also worth mentioning that a subset of the AWS VPC Flow Logs can be sent to S3 or a Splunk destination using either the **Regex** or **Eval** filters for the Route to Destination rule, but in this workshop you're sending all of the VPC Flow Logs to the S3 destination.
 
 ## (Bonus) Task 7: Reverse Regex Golf
 
