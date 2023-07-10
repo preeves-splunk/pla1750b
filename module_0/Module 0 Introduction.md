@@ -76,8 +76,13 @@ index=purchases
 
 ![Splunk Enterprise login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_10.png?raw=true)
 
-2. While there currently aren't any indexes on this installation of Splunk yet, run the following search against the `_internal` index to ensure search is working properly.
+2. If at any point you encounter a pop-up with information on how to get help from Splunk or prompting you to take a tour feel free to dismiss the pop-ups:
 
+![Splunk Enterprise with Helping You Get More Value from Splunk Software with Got it! button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_15.png?raw=true)
+
+![Splunk Enterprise with Welcome, Administrator popup with Skip button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_16.png?raw=true)
+
+3. While there currently aren't any indexes on this installation of Splunk yet, run the following search against the `_internal` index to ensure search is working properly.
 
 
 ```
@@ -86,6 +91,6 @@ index=_internal
 
 ![Splunk Enterprise search results for index=_internal with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_9.png?raw=true)
 
-3. In a terminal window, or your preferred SSH client, open an SSH session to the *Splunk Enterprise* host using the provided host name over port 2222.  Utilize the username and password provided by Splunk Show.  Once you have logged in, validate that you are able to run commands utilizing `sudo` by executing `sudo whoami`.  The expected command response is `root`.
+4. In a terminal window, or your preferred SSH client, open an SSH session to the *Splunk Enterprise* host using the provided host name over port 2222.  Utilize the username and password provided by Splunk Show.  Once you have logged in, validate that you are able to run commands utilizing `sudo` by executing `sudo whoami`.  The expected command response is `root`.
 
 ![Graphic showing terminal windo after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_12.png?raw=true)
