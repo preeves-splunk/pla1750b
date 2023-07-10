@@ -22,10 +22,8 @@ sudo mkdir /opt/splunk/ddss-rehydrate/
 3. Download the staged DDSS data from the Amazon S3 bucket by running the following command:
 
 ```
-sudo AWS_ACCESS_KEY_ID=AKIASBDOGC2FVLY4SENQ AWS_SECRET_ACCESS_KEY=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 aws s3 sync s3://pla1750b-public-ddss-s3-bucket/ /opt/splunk/ddss-rehydrate/
+aws s3 sync s3://pla1750b-public-ddss-s3-bucket/ /opt/splunk/ddss-rehydrate/
 ```
-
-Note: We know that hard-coding credentials like this into a command, especially in a public GitHub repo is a security worse-practice and not recommended.  We're doing this to get around AWS cross-account limits.  Literally the only thing this user can do is list and get objects from the public bucket that holds DDSS data.
 
 ![Terminal window with results of aws s3 sync command downloading files via sudo aws s3 sync s3://pla1750b-public-ddss-s3-bucket/ /opt/splunk/ddss-rehydrate/](https://github.com/preeves-splunk/pla1750b/blob/main/module_4/1_1.png?raw=true)
 
