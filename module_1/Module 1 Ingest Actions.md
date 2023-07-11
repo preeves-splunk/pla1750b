@@ -63,7 +63,7 @@ Also, notice how additional information around how much data was reduced is prov
 
 10. Save and deploy this ruleset by clicking the **Save** button.   If at any point you receive an error when trying to save these rules, try saving the ruleset again.
 
-## Task 2: Reduce Event Size
+## Task 2: Reduce Event Size by Masking Fields
 
 After taking another look at the firewall logs in the `firewall` index , you notice that the Cisco eStreamer data can be reduced by removing fields that don't contain valuable data.  After checking with the security and firewall teams, it's agreed these fields in the data can be removed.
 
@@ -183,7 +183,7 @@ Notice how the `index` value in the events has been changed from `main` to `stor
 
 7. Click **Save** to save and deploy the new rule.
 
-## Task 5: Check Your Work so Far
+## Task 5: Review IA Rule Results
 
 Now that the modifications have been deployed, it's time to check to make sure the ingest actions rulesets are applying like they're intended to be.  If at any point the results from these searches don’t match up with what you see in your Splunk Cloud environment, we recommend checking over the relevant task first before asking for assistance.
 
@@ -288,7 +288,7 @@ At this point, `aws:cloudwatchlgos:vpcflow` data will start being sent to the S3
 
 It's also worth mentioning that a subset of the AWS VPC Flow Logs can be sent to S3 or a Splunk destination using either the **Regex** or **Eval** filters for the Route to Destination rule, but in this workshop you're sending all of the VPC Flow Logs to the S3 destination.
 
-## (Bonus) Task 7: Reverse Regex Golf
+## Task 7: (Bonus) Reverse Regex Golf
 
 You may have noticed the regex in task 2 was not the prettiest: `([a-z0-9\_]+=(""|(b')?[0-]+(')?|TLS_NULL_WITH_NULL_NULL|Unknown|"Not Checked"|[0:]+|N\/A)\s)` .  
 

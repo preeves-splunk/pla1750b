@@ -14,7 +14,7 @@ Specifically for this module and for Forthly, you will be:
 3. Configure an existing index to send to DDSS
 4. Review DDAA restore process
 
-## Task 1: Create a new index
+## Task 1: Create a New Index
 
 In this task you'll be creating a new index for the DevOps team.  The DevOps team has some new CI/CD-related data they'd like to ingest into Splunk Cloud, and they're requesting a new index to hold that data.  The DevOps team needs the data to be stored for a total of 1 year.  They'd like to be able to search the data for 90 days in Splunk Cloud, then have the data be sent to DDAA for an additional 275 days.  
 
@@ -44,7 +44,7 @@ The retention times for DDAS and DDAA storage are independent of each other, not
 
 That's it!  The new `devops` will be deployed to the Splunk Cloud environment and ready for use within a few minutes.
 
-## Task 2: Configure a DDSS destination
+## Task 2: Configure a DDSS Destination
 
 In this task you'll be adding an Amazon S3-based destination for DDSS data to be sent to.  Since this is DDSS and not DDAA, the sales team has agreed to work with you to rehydrate this data if they ever need to search it.  Again, in module 4 you'll be walking through this process of downloading, rehydrating, and searching DDSS data.
 
@@ -83,7 +83,7 @@ Notice how Splunk Cloud generated and provided the Amazon S3 Bucket Policy that 
 
 That's it!  The new DDSS destination will be added to the Splunk Cloud environment.
 
-## Task 3: Configure an existing index to send to DDSS
+## Task 3: Configure an Index to Send to DDSS
 
 Now that the DDSS destination has been added, you'll need to configure an index to send data to it.  The sales team would like all purchase-related data to be saved to an Amazon S3 bucket after it has been searchable in Splunk Cloud for 90 days.  The sales data is located in the `purchases` index. 
 
@@ -99,7 +99,7 @@ Now that the DDSS destination has been added, you'll need to configure an index 
 
 That's it!  After 90 days, the data from the `purchases` index will be sent to the DDSS destination bucket, just like the sales team requested.
 
-## Task 4: Review DDAA Restore Orocess (bonus task!)
+## Task 4: (Bonus) Review DDAA Restore Process
 
 This this task, you'll be reviewing how to temporarily retore data from DDAA so it's searchable.  In this task you'll just be reviewing screenshots and steps, not actually changing or clicking anything in the Splunk web interface.
 
