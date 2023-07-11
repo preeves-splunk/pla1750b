@@ -13,7 +13,7 @@ A few notes on how this lab is formatted:
 
 ## Task 1: Explore Splunk Cloud Environment
 
-1. Open a browser tab and navigate to the Splunk Cloud URL provided by Splunk Show.  Log in as the `sc_admin` user and provided password provided by Splunk Show.  If prompted, click the **I accept these terms** checkmark box, then the Ok button.
+1. Open a browser tab and navigate to the Splunk Cloud Stack URL provided by Splunk Show.  Log in as the `sc_admin` user and sc_admin password.  If prompted, click the **I accept these terms** checkmark box, then the Ok button.
 
 ![Splunk Cloud login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_1.png?raw=true)
 
