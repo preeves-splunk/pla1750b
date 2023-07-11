@@ -7,7 +7,7 @@ Congratulations on your new job as Splunk Cloud administrator at Frothly!  Let's
 A few notes on how this lab is formatted:
 - Mono-spaced text `like this` and code blocks indicate specific callouts you need to type or pay attention to
 - Bolded text **like this** indicates an action you need to take such as clicking a button in a browser window
-- Both the Splunk Cloud and Splunk Enterprise hosts are configured to use the light theme so that what you see in the screenshots matches what you see on your screen.  However if you'd like to switch your interface to use the dark theme you're welcome to do so.
+- The screenshots in the lab use the light theme so it's easier to read.  However, your environment might be configured to use the dark theme.  If you'd like to switch your interface to so it matches the screenshots, you're welcome to do so by following the instructions here: https://docs.splunk.com/Documentation/SplunkCloud/latest/Admin/UITheme!
 - The red boxed sections in the screenshots indicate where you need to interact with the browser window or terminal session by clicking or typing something.
 - The green boxed sections in the screenshots indicate something you should read, view, or note.
 
