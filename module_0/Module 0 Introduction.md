@@ -23,7 +23,7 @@ A few notes on how this lab is formatted:
 
 ![Splunk Cloud color scheme pop-up with Skip Tour text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_13.png?raw=true)
 
-![Splunk Cloud Victoria upg rade pop-up with Don't show me this again button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_14.png?raw=true)
+![Splunk Cloud Victoria upgrade pop-up with Don't show me this again button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_14.png?raw=true)
 
 
 3. To discover what data sourcetypes and indexes are available in the Splunk Cloud instance, navigate to the **Search & Reporting app** under the **Apps** menu in the upper left hand corner of your browser.  Utilize the following search by copying and pasting it into the Search field and clicking the magnifying glass to the right to execute the search.
