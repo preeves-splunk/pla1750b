@@ -93,7 +93,7 @@ Notice how many of the values in the events consist of non-valuable data such as
 6. Add a new rule by clicking the **+ Add Rule**, and selecting the **Mask with Regular Expression** option.
 7. Configure ingest actions to remove some of the non-valuable fields by setting the following fields in the rule:
 	- **Match Regular Expression:** `([a-z\_]+=(""\s))`
-	- **Replace Expression:** Don't put anything here, just select the field and tap your space bar to enter a space character.
+	- **Replace Expression:** Select the field and tap your space bar to enter only a space character.
 8. Click the **Apply** button.
 
 Notice how this simple regular expression is only looking for key/value pairs with no data, and  is already reducing event size by 6%.
