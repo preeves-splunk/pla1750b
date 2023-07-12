@@ -96,7 +96,7 @@ Notice how many of the values in the events consist of non-valuable data such as
 	- **Replace Expression:** Select the field and tap your space bar to enter only a space character.
 8. Click the **Apply** button.
 
-Notice how this simple regular expression is only looking for key/value pairs with no data, and  is already reducing event size by 6%.
+Notice how this simple regular expression is only looking for key/value pairs with no data, and is already reducing event size by 6% as shown by the green box in the screenshot below.
 
 ![Splunk Cloud ingest actions ruleset with regex mask applied with the regular expression, replace expression, Apply button, and + Add Rule button highlighted in red and removed fields and data reduction size highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/2_5.png?raw=true) 
 

@@ -50,7 +50,7 @@ In this task you'll be adding an Amazon S3-based destination for DDSS data to be
 
 Normally during this process the Splunk Cloud admin would work with an AWS administrator to create the necessary AWS-side components for a DDSS destination.  Any AWS-side components for this task including the S3 bucket and the bucket policy have already been configured for you in this workshop.
 
-1. Navigate to the index configuration page by clicking **Settings** > **Indexes**.
+1. Navigate to the index configuration page by clicking **Settings** > **Indexes** if you are not already on that page.
 2. Bring up the `purchases` configuration page by clicking **Edit** next to the `purchases` index.
 
 ![Splunk Cloud Indexes Settings page Edit link for purchases index highlgihted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_3/2_1.png?raw=true)

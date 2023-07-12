@@ -2,7 +2,7 @@
 
 In the last module you configured AWS VPC Flow Logs to be sent to an Amazon S3 bucket for long-term storage.  In this module, you will configure Splunk Federated Search for Amazon S3 (FS-S3) to search AWS VPC Flow Log residing in an S3 bucket _without_ ingesting the data into Splunk.  FS-S3 works by leveraging [Amazon S3](https://aws.amazon.com/s3/) to store data, and [AWS Glue](https://aws.amazon.com/glue/) to create a data schema for Splunk Cloud to search against.  FS-S3 is great for infrequently searching across large volumes of data.
 
-Specifically for this module and for Forthly, after configuring FS-S3 in this module you will be:
+Specifically for this module and for Frothly, after configuring FS-S3 in this module you will be:
 1. Demonstrating to auditors that AWS VPC Flow Log data is being kept in S3 for long retention times
 2. Retrieve data from S3 that has aged out of Splunk to help the SOC with a security investigation
 
@@ -50,7 +50,7 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 
 ![Splunk Cloud with settings display shown with Create federated index button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/1_5.png?raw=true)
 
-6. On the `Create a Federated Index` pane, fill out the following fields:
+6. On the `Create a Federated Index` pane, fill out the following fields (do not click Save yet though!):
 	1. **Federated Index Name**: `vpcFlowLogs`
 	2. **Dataset Name**: `pla1750b_public_fs_s3_bucket`
 	3. **Time Field**: `time`
@@ -76,7 +76,7 @@ In this task you'll be configuring Splunk Cloud to search VPC Flow Log data resi
 
 ![Splunk Cloud create a Federated Index pane shown with the partition time settings, Add new field button, and Save button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_2/1_7.png?raw=true)
 
-9. To test this configuration, run the search below for **all time** and make sure results are returned with no errors:
+9. To test this configuration, run the search below for **All time** and make sure results are returned with no errors:
 
 ```
 | sdselect * from federated:vpcflowlogs
@@ -88,7 +88,7 @@ Please note that it may take several minutes for the proper AWS-based permission
 
 ## Task 2: Search Data Using FS-S3 to Show Long-Term Retention
 
-Now that your FS-S3 provider has been created, you can search data in the Amazon S3 bucket without ingesting it.  The Forthly compliance team is working with auditors to show that you're storing VPC Flow Logs long-term.  They've determined that a sample of logs from mid-June as well as a count of events per AWS Account will satisfy the auditors questions.
+Now that your FS-S3 provider has been created, you can search data in the Amazon S3 bucket without ingesting it.  The Frothly compliance team is working with auditors to show that you're storing VPC Flow Logs long-term.  They've determined that a sample of logs from mid-June as well as a count of events per AWS Account will satisfy the auditors questions.
 
 The new `sdselect` command is used to query data stored in Amazon S3 made searchable through FS-S3.  It uses a SQL-like syntax structure and the full documentation for this will be released when FS-S3 comes out.  For the workshop though, you will incrementally build the query in each of the following steps.  For each one of these steps read the description for what the query is trying to accomplish then run the query.
 
@@ -121,7 +121,7 @@ That's it!  In this task, you were able to search data in an Amazon S3 bucket us
 
 ## Task 3: Search Amazon S3 for Security Investigation
 
-The Forthly SOC would like help investigating an ongoing security incident.  Specifically, they'd like to know every IP a specific ENI communicated with between June 17th and June 23rd.  The ENI in question is `eni-0212b9abe7101dbcb` and it’s in the `958172947816` AWS account.
+The Frothly SOC would like help investigating an ongoing security incident.  Specifically, they'd like to know every IP a specific ENI communicated with between June 17th and June 23rd.  The ENI in question is `eni-0212b9abe7101dbcb` and it’s in the `958172947816` AWS account.
 
 Just like the previous task, for each one of these steps read the description for what the search is trying to accomplish then run the query.
 
