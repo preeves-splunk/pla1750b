@@ -13,7 +13,7 @@ In Splunk Cloud, ingest actions works by modifying `props.conf` and `transforms.
 
 In this module, you will use ingest actions to clean up, reduce, redact, and re-route data in Splunk before it gets ingested.  You'll build out several rulesets, then towards the end of the module check the work.  If you're curious, the full documentation for ingest actions can be found on [docs.splunk.com](https://docs.splunk.com/Documentation/SplunkCloud/latest/Data/DataIngest).
 
-Even though we'll be using ingest actions for this module, the same work can be done on Splunk's new data stream processor [Edge Processor](https://docs.splunk.com/Documentation/SplunkCloud/latest/EdgeProcessor/AboutEdgeProcessorSolution).
+Even though we'll be using ingest actions for this module, the same work can be done on Splunk's new stream processor [Edge Processor](https://docs.splunk.com/Documentation/SplunkCloud/latest/EdgeProcessor/AboutEdgeProcessorSolution).
 
 ## Task 1: Reduce Data Ingestion Volume by Dropping Non-Value Events
 
