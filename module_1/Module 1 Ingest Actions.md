@@ -222,7 +222,7 @@ index=purchases sourcetype=web_purchases
 
 Notice that the `credit_card` values are now redacted from events in the past few minutes  (when the ingest actions rules started taking effect), and that only the last 4 digits of the credit card number are in the events.
 
-![Splunk Cloud search results of index=purchases sourcetype=web_purchases with the search highlighted in red redacted credit card numbers in the events highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/5_3.png?raw=true)
+![Splunk Cloud search results of index=purchases sourcetype=web_purchases with the search highlighted in red redacted credit card numbers in the events highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/5_4.png?raw=true)
 
 4. Check that there are OneDrive-related events being routed to the `storage_services` index by running the search below:
 
