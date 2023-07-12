@@ -66,7 +66,7 @@ sudo /opt/splunk/bin/splunk restart
 index=ddss-rehydrate sourcetype=web_purchases | head 100
 ```
 
-![Splunk Enterprise window showing results of index=ddss-rehydrate sourcetype=web_purchases | head 100 with search & all time highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_4/1_2.png?raw=true)
+![Splunk Enterprise window showing results of index=ddss-rehydrate sourcetype=web_purchases | head 100 with search & all time highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_4/1_4.png?raw=true)
 
 The DDSS data has been successfully rehydrated!  You as the Splunk admin, or anyone who has access to the `ddss-rehydrate` on the Splunk Enterprise host can now search the DDSS data.  However, the sales team wants to be able to search this data from Splunk Cloud.
 
@@ -122,6 +122,6 @@ Normally, you'd want to use a dedicated service account just for S2S-FS on the r
 index=federated:pla1750b-s2s-fs-ddss-rehydrate sourcetype=web_purchases
 ```
 
-![Splunk Cloud search results of index=federated:pla1750b-s2s-fs-ddss-rehydrate sourcetype=web_purchases with search, time range, and search button highlighted in red, and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_4/2_7.png?raw=true)
+![Splunk Cloud search results of index=federated:pla1750b-s2s-fs-ddss-rehydrate sourcetype=web_purchases with search, time range, and search button highlighted in red, and search results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_4/2_8.png?raw=true)
 
 That's it!  The rehydrated DDSS data is now available for searching using the Splunk Cloud environment.  From here, you would grant the sales team access to the `federated:pla1750b-s2s-fs-ddss-rehydrate` index for them to search the rehydrated DDSS data.  Once they finished, you would remote the federated index and federated search provider in Splunk Cloud, then shut down and/or terminate the Splunk Enterprise host.

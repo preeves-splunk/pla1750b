@@ -7,7 +7,7 @@ Congratulations on your new job as Splunk Cloud administrator at Frothly!  Let's
 A few notes on how this lab is formatted:
 - Mono-spaced text `like this` and code blocks indicate specific callouts you need to type or pay attention to
 - Bolded text **like this** indicates an action you need to take such as clicking a button in a browser window
-- The screenshots in the lab use the light theme so it's easier to read.  However, your environment might be configured to use the dark theme.  If you'd like to switch your interface to so it matches the screenshots, you're welcome to do so by following the instructions here: https://docs.splunk.com/Documentation/SplunkCloud/latest/Admin/UITheme!
+- The screenshots in the lab use the light theme so it's easier to read in the instructions.  However, your environment might be configured to use the dark theme.  If you'd like to change your interface theme setting, you're welcome to do so by following the instructions here: https://docs.splunk.com/Documentation/SplunkCloud/latest/Admin/UITheme !
 - The red boxed sections in the screenshots indicate where you need to interact with the browser window or terminal session by clicking or typing something.
 - The green boxed sections in the screenshots indicate something you should read, view, or note.
 
@@ -76,7 +76,7 @@ index=purchases
 
 ![Splunk Enterprise login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_10.png?raw=true)
 
-2. If at any point you encounter a pop-up with information on how to get help from Splunk or prompting you to take a tour feel free to dismiss the pop-ups:
+2. If at any point you encounter a pop-up with information on how to get help from Splunk or prompting you to take a tour feel free to dismiss the pop-ups.  Likewise, if you see any IOWait wanrings, these can be ignored.
 
 ![Splunk Enterprise with Helping You Get More Value from Splunk Software with Got it! button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_15.png?raw=true)
 

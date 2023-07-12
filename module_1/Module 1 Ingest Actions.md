@@ -58,10 +58,11 @@ Also, notice how additional information around how much data was reduced is prov
 
 8. View the settings that will be applied to the `props.conf` and `transforms.conf` files by clicking the **Preview Config** button.  This is a good way to check to see how Splunk is going to apply this rule set.  The `RULESET` items in `props.conf` are new to ingest actions.  No action is needed here, this step was just to show you how you can preview the configurations before they get deployed.  
 9. Click the **Close** button.
+10. Save and deploy this ruleset by clicking the **Save** button.   
+
+In this module, if at any point you receive an error when trying to save these rulesets, try saving the ruleset again.  If when you try to save the rule a second time you recieve an error stating that a ruleset with the same name already exists, you can ignore that error mesage and move on.
 
 ![Splunk Cloud ingest actions interface showing preview of props.conf and transforms.conf with Preview Config, Save, and Close buttons highlighted in red and the props.conf and transforms.conf settings highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_1/1_9.png?raw=true)
-
-10. Save and deploy this ruleset by clicking the **Save** button.   If at any point you receive an error when trying to save these rules, try saving the ruleset again.
 
 ## Task 2: Reduce Event Size by Masking Fields
 

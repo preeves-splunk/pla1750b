@@ -101,7 +101,9 @@ That's it!  After 90 days, the data from the `purchases` index will be sent to t
 
 ## Task 4: (Bonus) Review DDAA Restore Process
 
-This this task, you'll be reviewing how to temporarily retore data from DDAA so it's searchable.  In this task you'll just be reviewing screenshots and steps, not actually changing or clicking anything in the Splunk web interface.
+This this task, you'll be reviewing how to temporarily retore data from DDAA so it's searchable.  In this task you'll just be reviewing screenshots and steps, not actually changing or clicking anything in the Splunk web interface.  
+
+It's worth reapeating: no action is required from you for this task, you'll just be reviewing screenshots.
 
 Once requested, DDAA data is searchable within 24 hours of it being restored and is searchable for up to 30 days.  Also, you are only able to restore the equivelant of 10% of your DDAS storage entitlement from DDAA at a time.  Restored DDAA data can be forced to expire before the 30 days is over as well.
 
