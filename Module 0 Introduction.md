@@ -15,26 +15,26 @@ A few notes on how this lab is formatted:
 
 1. Open a browser tab and navigate to the Splunk Cloud Stack URL provided by Splunk Show.  Log in using the provided`conf23 Username` and `conf23 Password`.  If prompted, click the **I accept these terms** checkmark box, then the Ok button.
 
-![Splunk Cloud login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_1.png?raw=true)
+![Splunk Cloud login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_1.png?raw=true)
 
-![Splunk Cloud Terms of Service screen with I accept these terms and Ok button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_2.png?raw=true)
+![Splunk Cloud Terms of Service screen with I accept these terms and Ok button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_2.png?raw=true)
 
 2. If at any point you encounter a pop-up notifying you that you can change the color theme between light and dark mode, or that you have been upgraded to a Victoria experience, feel free to dismiss these items:
 
-![Splunk Cloud color scheme pop-up with Skip Tour text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_13.png?raw=true)
+![Splunk Cloud color scheme pop-up with Skip Tour text highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_13.png?raw=true)
 
-![Splunk Cloud Victoria upgrade pop-up with Don't show me this again button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_14.png?raw=true)
+![Splunk Cloud Victoria upgrade pop-up with Don't show me this again button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_14.png?raw=true)
 
 
 3. To discover what data sourcetypes and indexes are available in the Splunk Cloud instance, navigate to the **Search & Reporting app** under the **Apps** menu in the upper left hand corner of your browser.  Utilize the following search by copying and pasting it into the Search field and clicking the magnifying glass to the right to execute the search.
 
-![Splunk Cloud main screen with Search & Reporting app link highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_3.png?raw=true)
+![Splunk Cloud main screen with Search & Reporting app link highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_3.png?raw=true)
 
 ```
 | tstats count where index=* by index, sourcetype
 ```
 
-![Search results for | tstats count where index=* by index, sourcetype with search and search button highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_4.png?raw=true)
+![Search results for | tstats count where index=* by index, sourcetype with search and search button highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_4.png?raw=true)
 
 If there is data available, search through each of the following indexes in turn to look at the available data.  Note that each of the searches should return results from the past 30 minutes.
 
@@ -44,7 +44,7 @@ If there is data available, search through each of the following indexes in turn
 index=main
 ```
 
-![Splunk Cloud search results for index=main with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_5.png?raw=true)
+![Splunk Cloud search results for index=main with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_5.png?raw=true)
 
 5. Search the AWS VPC Flow Logs:
 
@@ -52,7 +52,7 @@ index=main
 index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 ```
 
-![Splunk Cloud search results for index=aws \sourcetype=aws:cloudwatchlogs:vpcflow with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_6.png?raw=true)
+![Splunk Cloud search results for index=aws \sourcetype=aws:cloudwatchlogs:vpcflow with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_6.png?raw=true)
 
 6. Search the firewall events:
 
@@ -60,7 +60,7 @@ index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 index=firewall
 ```
 
-![Splunk Cloud search results for index=firewall with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_7.png?raw=true)
+![Splunk Cloud search results for index=firewall with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_7.png?raw=true)
 
 7. Search the purchase records:
 
@@ -68,19 +68,19 @@ index=firewall
 index=purchases
 ```
 
-![Splunk Cloud search results for index=purchases with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_8.png?raw=true)
+![Splunk Cloud search results for index=purchases with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_8.png?raw=true)
 
 ## Task 2: Explore Splunk Enterprise Environment
 
 1. In another browser tab, navigate to the Splunk Enterprise URL provided by Splunk Show and log in as the `admin` user with the password provided by Splunk Show.
 
-![Splunk Enterprise login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_10.png?raw=true)
+![Splunk Enterprise login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_10.png?raw=true)
 
 2. If at any point you encounter a pop-up with information on how to get help from Splunk or prompting you to take a tour feel free to dismiss the pop-ups.  Likewise, if you see any IOWait wanrings, these can be ignored.
 
-![Splunk Enterprise with Helping You Get More Value from Splunk Software with Got it! button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_15.png?raw=true)
+![Splunk Enterprise with Helping You Get More Value from Splunk Software with Got it! button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_15.png?raw=true)
 
-![Splunk Enterprise with Welcome, Administrator popup with Skip button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/module_0/0_16.png?raw=true)
+![Splunk Enterprise with Welcome, Administrator popup with Skip button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_16.png?raw=true)
 
 3. While there currently aren't any indexes on this installation of Splunk yet, run the following search against the `_internal` index to ensure search is working properly.
 
@@ -89,8 +89,8 @@ index=purchases
 index=_internal
 ```
 
-![Splunk Enterprise search results for index=_internal with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_9.png?raw=true)
+![Splunk Enterprise search results for index=_internal with search highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_9.png?raw=true)
 
-4. In a terminal window, or your preferred SSH client, open an SSH session to the *Splunk Enterprise* host using the provided host name over port 2222.  Utilize the username and password provided by Splunk Show.  Once you have logged in, validate that you are able to run commands utilizing `sudo` by executing `sudo whoami`.  The expected command response is `root`.
+4. In a terminal window, or your preferred SSH client, open an SSH session to the *Splunk Enterprise* host using the provided host name over port 2222.  It's easiest to utilize the SSH ommand and SSH Password by Splunk Show.  Once you have logged in, validate that you are able to run commands utilizing `sudo` by executing `sudo whoami`.  The expected command response is `root`.
 
-![Graphic showing terminal windo after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/main/module_0/0_12.png?raw=true)
+![Graphic showing terminal windo after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_12.png?raw=true)
