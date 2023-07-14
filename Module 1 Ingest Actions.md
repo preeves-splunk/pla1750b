@@ -132,20 +132,20 @@ Notice how there are credit card numbers in the events.
 
 ![Splunk Cloud ingest actions pane with web_purchase sourcetype selected, with ruleset name, select sourcetype, use web_purchases and Sample button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_1/3_2.png?raw=true)
 
-5. Create a new rule by clicking the **+ Add Rule**, and selecting the **Mask with Regular Expression** rule.
+6. Create a new rule by clicking the **+ Add Rule**, and selecting the **Mask with Regular Expression** rule.
 
 ![Splunk Cloud ingest actions pane selecting Filter using Regular Expressions rule with the + Add Rule button and Filter using Regular Expression option highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_1/3_3.png?raw=true)
 
-6. Configure the rule to mask (redact) credit card numbers by filling out the following fields:
+7. Configure the rule to mask (redact) credit card numbers by filling out the following fields:
 	- **Match Regular Expression:** `(credit_card=")(\d*)(\d{4})`
 	- **Replace Expression:** `\1XXXX\3`
-7. Click the **Apply** button.
+8. Click the **Apply** button.
 
 Notice how in the Data Preview pane you can now see that only the remaining 4 digits of the credit card number are shown, and not the full credit card number.
 
 ![Splunk Cloud ingest actions pane selecting Filter using Regular Expressions rule with regular expressions and Apply button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_1/3_4.png?raw=true)
 
-8. Save and deploy this rule set by clicking the **Save** button.
+9. Save and deploy this rule set by clicking the **Save** button.
 
 ## Task 4: Change Destination Index
 
@@ -182,7 +182,7 @@ Notice how the `index` value in the events has been changed from `main` to `stor
 
 ![Splunk Cloud ingest actions with regular expression, index string, and Apply button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_1/4_4.png?raw=true)
 
-7. Click **Save** to save and deploy the new rule.
+79 Click **Save** to save and deploy the new rule.
 
 ## Task 5: Review IA Rule Results
 
