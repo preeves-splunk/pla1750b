@@ -131,7 +131,7 @@ Notice how there are credit card numbers in the events.
 
 2. Create a new ingest actions ruleset by clicking **Settings** > **Ingest Actions**, then clicking **New Ruleset**.
 3. Enter a descriptive **Ruleset Name**, such as `web_purchases-redaction` to indicate that this ruleset applies to the `web_purchases` sourcetype and that this ruleset is intended to redact data.
-4. Configure the ingest actions ruleset to run against the `web_purchases` sourcetype data by clicking the **Select sourcetype...** box, typing `web_purchases`, and clicking **Use web_purchases**.
+4. Configure the ingest actions ruleset to run against the `web_purchases` sourcetype data by clicking the **Select sourcetype...** box, typing `web_purchases`, and clicking **Use web_purchases**.  You will need to type the whole `web_purchases` sourcetype, this sourcetype will not auto-populate like other sourcetypes in other tasks.
 5. Click the **Sample** button to retrieve sample data and populate the Data Preview pane.
 
 ![Splunk Cloud ingest actions pane with web_purchase sourcetype selected, with ruleset name, select sourcetype, use web_purchases and Sample button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_1/3_2.png?raw=true)
