@@ -36,7 +36,7 @@ A few notes on how this lab is formatted:
 
 ![Search results for | tstats count where index=* by index, sourcetype with search and search button highlighted in red, and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_4.png?raw=true)
 
-If there is data available, search through each of the following indexes in turn to look at the available data.  Note that each of the searches should return results from the past 30 minutes.
+If there is data available, search through each of the following indexes in turn to look at the available data by running each of the searches listed below.  Note that each of the searches should return results from the past 30 minutes.
 
 4. Search the `main` index:
 
@@ -76,7 +76,7 @@ index=purchases
 
 ![Splunk Enterprise login prompt with login fields highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_10.png?raw=true)
 
-2. If at any point you encounter a pop-up with information on how to get help from Splunk or prompting you to take a tour feel free to dismiss the pop-ups.  Likewise, if you see any IOWait wanrings, these can be ignored.
+2. If at any point you encounter a pop-up with information on how to get help from Splunk or prompting you to take a tour feel free to dismiss the pop-ups.  Likewise, if you see any IOWait warnings, these can be ignored.
 
 ![Splunk Enterprise with Helping You Get More Value from Splunk Software with Got it! button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_15.png?raw=true)
 
@@ -95,4 +95,4 @@ index=_internal
 
 Please ignore any messages realted to system restarts.
 
-![Graphic showing terminal windo after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_12.png?raw=true)
+![Graphic showing terminal window after SSH, with whoami results with root highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_0/0_12.png?raw=true)

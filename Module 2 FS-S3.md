@@ -164,7 +164,7 @@ Notice how only events involving the AWS account number `958172947816` are shown
 
 Notice how only events with the string `eni-0212b9abe7101dbcb` are returned. 
 
-![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" shown over June 17th through June 23rd timeframe ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_2/3_4.png?raw=true)
+![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" shown over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_2/3_4.png?raw=true)
 
 6. Increase the `LIMIT` to make sure all of the events are being retrieved from the Amazon S3 bucket
 
@@ -174,7 +174,7 @@ Notice how only events with the string `eni-0212b9abe7101dbcb` are returned.
 
 Notice how there are more than the default 100,000 events being returned.
 
-![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" LIMIT 100000000 over June 17th through June 23rd timeframe ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_2/3_5.png?raw=true)
+![Splunk Cloud with results from search| sdselect time, event from federated:vpcflowlogs where source=958172947816 AND event like "%eni-0212b9abe7101dbcb%" LIMIT 100000000 over June 17th through June 23rd timeframe with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_2/3_5.png?raw=true)
 
 7. Data retrieved via the `sdselect` command doesn't know about sourcetypes or search-time field extractions, other SPL commands like `rex` need to be used in order to extract fields at search time.  Use the query below to extract the relevant CIM fields for VPC Flow Logs  (the regular expression was taken from the Splunk Add-on for Amazon Web Services):
 
@@ -185,7 +185,7 @@ Notice how there are more than the default 100,000 events being returned.
 
 Notice how CIM field extractions like `dest_port`, and `src_ip` are now in the event table.
 
-![Splunk Cloud with results from search shown ith the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_2/3_6.png?raw=true)
+![Splunk Cloud with results from search shown with the search highlighted in red and results highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_2/3_6.png?raw=true)
 
 8. Add a `stats` command to calculate the total number of bytes transmitted between the suspect ENI, each source IP it held, and each destination IP it talked to:
 

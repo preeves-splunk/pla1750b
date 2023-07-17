@@ -19,7 +19,7 @@ In this task, you'll be using the Splunk Enterprise host to download and rehydra
 sudo mkdir /opt/splunk/ddss-rehydrate/
 ```
 
-3. Run the following search for **All time** in Splunk Cloud to get the command to download the staged DDSS data from the Amzon S3 bucket:
+3. Run the following search for **All time** in Splunk Cloud to get the command to download the staged DDSS data from the Amazon S3 bucket:
 
 ```
 index=main sourcetype=httpevent

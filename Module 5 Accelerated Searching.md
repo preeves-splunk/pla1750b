@@ -166,7 +166,7 @@ index=aws sourcetype=aws:cloudwatchlogs:vpcflow
 | stats sum(bytes) as sum_bytes by interface_id, account_id, _time
 ```
 
-![Splunk Cloud search results shown with search of index=aws sourcetype=aws:cloudwatchlogs:vpcflow | bin span=1m _time | stats sum(bytes) as sum_bytes by interface_id, account_id, _time highlighted in red, and results in table form highlighted ing reen](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_5/3_2.png?raw=true)
+![Splunk Cloud search results shown with search of index=aws sourcetype=aws:cloudwatchlogs:vpcflow | bin span=1m _time | stats sum(bytes) as sum_bytes by interface_id, account_id, _time highlighted in red, and results in table form highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_5/3_2.png?raw=true)
 
 3. Use the rename command to properly format the `sum_bytes` field into a metric name format
 ```
