@@ -46,7 +46,11 @@ index=firewall sourcetype=cisco:asa 106023 OR 302020 OR 302021 OR 313005 OR 1060
 
 ![Splunk Cloud ingest actions interface with Filter using Regular Expressions rule being selected with + Add Rule button and Filter using Regular Expression filter highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_1/1_6.png?raw=true)
 
-7. Configure this rule by leaving the **Source Field** set to `_raw` so the regex applies to the `_raw` field, and setting the **Drop Events Matching Regular Expression** field to the regex `(106023|302020|302021|313005|106015|106006|106001|302022|302023|302024|302025|302026|302027|4001\d+)`, then clicking **Apply** to apply the rule to the sample data.
+7. Configure this rule by leaving the **Source Field** set to `_raw` so the regex applies to the `_raw` field, and setting the **Drop Events Matching Regular Expression** field to the regex 
+```
+(106023|302020|302021|313005|106015|106006|106001|302022|302023|302024|302025|302026|302027|4001\d+)
+```
+8. Apply this rule to the sample data by clicking **Apply**.
 
 ![Splunk Cloud ingest actions interface with applied via regex with regex , and Apply button highlighted in red](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_1/1_7.png?raw=true)
 
@@ -56,9 +60,9 @@ Also, notice how additional information around how much data was reduced is prov
 
 ![Splunk Cloud ingest actions interface with applied via regex with dropped events and percentage chagned highlighted in green](https://github.com/preeves-splunk/pla1750b/blob/v3/assets/module_1/1_8.png?raw=true)
 
-8. View the settings that will be applied to the `props.conf` and `transforms.conf` files by clicking the **Preview Config** button.  This is a good way to check to see how Splunk is going to apply this rule set.  The `RULESET` items in `props.conf` are new to ingest actions.  No action is needed here, this step was just to show you how you can preview the configurations before they get deployed.  
-9. Click the **Close** button.
-10. Save and deploy this ruleset by clicking the **Save** button.   
+9. View the settings that will be applied to the `props.conf` and `transforms.conf` files by clicking the **Preview Config** button.  This is a good way to check to see how Splunk is going to apply this rule set.  The `RULESET` items in `props.conf` are new to ingest actions.  No action is needed here, this step was just to show you how you can preview the configurations before they get deployed.  
+10. Click the **Close** button.
+11. Save and deploy this ruleset by clicking the **Save** button.   
 
 In this module, if at any point you receive an error when trying to save these rulesets, try saving the ruleset again.  If when you try to save the rule a second time you recieve an error stating that a ruleset with the same name already exists, you can ignore that error mesage and move on.
 
